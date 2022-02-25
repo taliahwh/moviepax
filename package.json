@@ -1,0 +1,34 @@
+{
+  "name": "movipax",
+  "version": "1.0.0",
+  "description": "MERN Movie Database",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taliahwh/moviepax.git"
+  },
+  "author": "Taliah Wharton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taliahwh/moviepax/issues"
+  },
+  "homepage": "https://github.com/taliahwh/moviepax#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.0",
+    "express-validator": "^6.14.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.3",
+    "multer": "^1.4.4",
+    "nodemon": "^2.0.15"
+  }
+}
