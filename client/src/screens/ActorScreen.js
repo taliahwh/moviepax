@@ -1,10 +1,33 @@
 import React from 'react';
+import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 
+import { LeftArrow, RightArrow } from '../components/Arrows';
 import Footer from '../components/Footer';
 import KnownForCard from '../components/KnownForCard';
 import ActingSection from '../components/ActingSection';
 
+const getItems = () =>
+  Array(20)
+    .fill(0)
+    .map((_, ind) => ({ id: `element-${ind}` }));
+
 const ActorScreen = () => {
+  const [items, setItems] = React.useState(getItems);
+  const [selected, setSelected] = React.useState([]);
+
+  const isItemSelected = (id) => !!selected.find((el) => el === id);
+
+  const handleClick =
+    (id) =>
+    ({ getItemById, scrollToItem }) => {
+      const itemSelected = isItemSelected(id);
+
+      setSelected((currentSelected) =>
+        itemSelected
+          ? currentSelected.filter((el) => el !== id)
+          : currentSelected.concat(id)
+      );
+    };
   return (
     <>
       <div className="h-full mx-auto max-w-8xl">
@@ -84,13 +107,17 @@ const ActorScreen = () => {
               Known For
             </h4>
 
-            <div className="grid grid-cols-3 lg:grid-cols-5 gap-2">
-              <KnownForCard />
-              <KnownForCard />
-              <KnownForCard />
-              <KnownForCard />
-              <KnownForCard />
-            </div>
+            <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+              {items.map(({ id }) => (
+                <Card
+                  itemId={id} // NOTE: itemId is required for track items
+                  title={id}
+                  key={id}
+                  onClick={handleClick(id)}
+                  selected={isItemSelected(id)}
+                />
+              ))}
+            </ScrollMenu>
 
             <h4 className="py-1 font-semibold text-xl text-secondary pt-6">
               Acting
@@ -103,5 +130,22 @@ const ActorScreen = () => {
     </>
   );
 };
+
+function Card({ onClick }) {
+  const visibility = React.useContext(VisibilityContext);
+
+  return (
+    <div className="">
+      <div
+        onClick={() => onClick(visibility)}
+        className="pr-5 w-40 pb-5"
+        tabIndex={0}
+      >
+        {/* Map over Treding and display MovieCards */}
+        <KnownForCard />
+      </div>
+    </div>
+  );
+}
 
 export default ActorScreen;

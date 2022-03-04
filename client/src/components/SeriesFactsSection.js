@@ -1,13 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaInstagram } from 'react-icons/fa';
+import { FaTwitter } from 'react-icons/fa';
 
 const SeriesFactsSection = () => {
   return (
     <div className="flex flex-col space-y-4 px-2 pb-5">
       {/* Social Media Icons */}
-      <div className="social-media-icons flex space-x-2">
-        <Link to="/">Facebook</Link>
-        <Link to="/">Instagram</Link>
+      <div className="social-media-icons flex space-x-4">
+        <Link to="/">
+          {' '}
+          <FaInstagram className="text-2xl" />
+        </Link>
+        <Link to="/">
+          {' '}
+          <FaTwitter className="text-2xl" />
+        </Link>
       </div>
 
       <div className="status-network-type-language flex flex-col space-y-4">
