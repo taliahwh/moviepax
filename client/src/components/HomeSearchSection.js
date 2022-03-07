@@ -25,7 +25,7 @@ const HomeSearchSection = () => {
           <div className="flex rounded-full">
             <input
               type="text"
-              className="px-4 py-2 text-gray-600 w-80 sm:w-96 md:w-[34rem] lg:w-[46rem] rounded-l-full"
+              className="px-4 py-2 text-gray-600 w-60 sm:w-96 md:w-[34rem] lg:w-[46rem] rounded-l-full"
               placeholder="Search for a movie, tv show, or person..."
             />
             <button className="flex items-center justify-center px-4 text-white font-semibold bg-secondary hover:bg-[#3b3333] transition-colors duration-150 rounded-r-full">
