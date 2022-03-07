@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 
 import { LeftArrow, RightArrow } from './Arrows';
@@ -34,11 +35,38 @@ const TrendingSection = () => {
       <div className="flex space-x-5 items-center pb-4">
         <h3 className="text-2xl font-semibold text-secondary">Trending</h3>
 
-        <div className="space-x-3 border-1 border-secondary rounded-full hidden md:flex">
-          <p className="active bg-secondary px-5 py-1 rounded-full font-semibold text-white">
+        {/* <div className="space-x-3 border-1 border-secondary rounded-full hidden md:flex">
+          <button className="active bg-secondary px-5 py-1 rounded-full font-semibold text-white">
             Today
-          </p>
-          <p className="px-5 py-1 font-semibold">This Week</p>
+          </button>
+          <button className="px-5 py-1 font-semibold">This Week</button>
+        </div> */}
+        <div
+          className="hidden md:inline-flex shadow-sm border-secondary border-1 rounded-full space-x-3"
+          role="group"
+        >
+          <NavLink
+            to="/"
+            // className={(state) => console.log(state)}
+            className={({ isActive }) =>
+              isActive
+                ? 'transition ease-in delay-200 py-1 px-4 text-md font-semibold bg-secondary text-white rounded-full'
+                : 'py-1 px-4 text-md font-semibold bg-white text-secondary rounded-full'
+            }
+          >
+            Today
+          </NavLink>
+          <NavLink
+            to="/trending/thisweek"
+            // className={(state) => console.log(state)}
+            className={({ isActive }) =>
+              isActive
+                ? 'transition ease-in delay-200 py-1 px-4 text-md font-semibold bg-secondary text-white rounded-full'
+                : 'py-1 px-4 text-md font-semibold bg-white text-secondary rounded-full'
+            }
+          >
+            This Week
+          </NavLink>
         </div>
         <div className="md:hidden">
           <Dropdown />
@@ -97,9 +125,9 @@ const Dropdown = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M19 9l-7 7-7-7"
           ></path>
         </svg>
@@ -111,20 +139,20 @@ const Dropdown = () => {
       >
         <ul className="py-1" aria-labelledby="dropdownButton">
           <li>
-            <a
-              href="/"
+            <Link
+              to="/"
               className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
             >
               Today
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="/"
+            <Link
+              to="/"
               className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
             >
               This Week
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

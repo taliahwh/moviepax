@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 
 import { LeftArrow, RightArrow } from './Arrows';
@@ -37,13 +38,57 @@ const LatestTrailersSection = () => {
       {/* Header */}
       <div className="flex space-x-5 items-center pb-4">
         <h3 className="text-2xl font-semibold text-white">Latest Trailers</h3>
-        <div className="flex space-x-3 border-1 border-primary rounded-full">
-          <p className="active bg-primary text-secondary px-5 py-1 rounded-full font-semibold ">
+        <div
+          className="hidden md:inline-flex shadow-sm border-primary border-1 rounded-full space-x-3"
+          role="group"
+        >
+          <NavLink
+            to="/"
+            // className={(state) => console.log(state)}
+            className={({ isActive }) =>
+              isActive
+                ? 'transition ease-in delay-200 py-1 px-4 text-md font-semibold bg-primary text-secondary rounded-full'
+                : 'py-1 px-4 text-md font-semibold bg-none text-primary rounded-full'
+            }
+          >
             Streaming
-          </p>
-          <p className="px-5 py-1 font-semibold text-white">TV</p>
-          <p className="px-5 py-1 font-semibold text-white">For Rent</p>
-          <p className="px-5 py-1 font-semibold text-white">In Theatres</p>
+          </NavLink>
+          <NavLink
+            to="/trailers/ontv"
+            // className={(state) => console.log(state)}
+            className={({ isActive }) =>
+              isActive
+                ? 'transition ease-in delay-200 py-1 px-4 text-md font-semibold bg-primary text-secondary rounded-full'
+                : 'py-1 px-4 text-md font-semibold bg-none text-primary rounded-full'
+            }
+          >
+            On TV
+          </NavLink>
+          <NavLink
+            to="/trailers/forrent"
+            // className={(state) => console.log(state)}
+            className={({ isActive }) =>
+              isActive
+                ? 'transition ease-in delay-200 py-1 px-4 text-md font-semibold bg-primary text-secondary rounded-full'
+                : 'py-1 px-4 text-md font-semibold bg-none text-primary rounded-full'
+            }
+          >
+            For Rent
+          </NavLink>
+          <NavLink
+            to="/trailers/intheatres"
+            // className={(state) => console.log(state)}
+            className={({ isActive }) =>
+              isActive
+                ? 'transition ease-in delay-200 py-1 px-4 text-md font-semibold bg-primary text-secondary rounded-full'
+                : 'py-1 px-4 text-md font-semibold bg-none text-primary rounded-full'
+            }
+          >
+            In Theatres
+          </NavLink>
+        </div>
+        <div className="md:hidden">
+          <Dropdown />
         </div>
       </div>
       {/* Content */}
@@ -78,5 +123,74 @@ function Card({ onClick }) {
     </div>
   );
 }
+
+const Dropdown = () => {
+  return (
+    <>
+      <button
+        id="dropdownButton"
+        data-dropdown-toggle="dropdown"
+        className="text-white font-semibold bg-secondary text-md focus:ring-3 focus:ring-blue-300 rounded-full px-5 py-1 text-center inline-flex items-center"
+        type="button"
+      >
+        Format{' '}
+        <svg
+          className="ml-2 w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M19 9l-7 7-7-7"
+          ></path>
+        </svg>
+      </button>
+
+      <div
+        id="dropdown"
+        className="hidden z-10 w-28 text-base list-none bg-white rounded divide-y divide-gray-100 border-1 border-secondary"
+      >
+        <ul className="py-1" aria-labelledby="dropdownButton1">
+          <li>
+            <a
+              href="/"
+              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+            >
+              Streaming
+            </a>
+          </li>
+          <li>
+            <Link
+              to="/"
+              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+            >
+              On Tv
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/"
+              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+            >
+              For Rent
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/"
+              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+            >
+              In Theatres
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </>
+  );
+};
 
 export default LatestTrailersSection;
