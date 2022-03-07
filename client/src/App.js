@@ -12,6 +12,14 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" exact element={<HomeScreen />} />
+        <Route path="/trending/today" exact element={<HomeScreen />} />
+        <Route path="/trending/thisweek" exact element={<HomeScreen />} />
+        <Route path="/popular/ontv" exact element={<HomeScreen />} />
+        <Route path="/popular/forrent" exact element={<HomeScreen />} />
+        <Route path="/popular/intheatres" exact element={<HomeScreen />} />
+        <Route path="/trailers/ontv" exact element={<HomeScreen />} />
+        <Route path="/trailers/forrent" exact element={<HomeScreen />} />
+        <Route path="/trailers/intheatres" exact element={<HomeScreen />} />
         <Route path="/:id" exact element={<DetailsScreen />} />
         <Route path="/actor/:id" exact element={<ActorScreen />} />
       </Routes>
