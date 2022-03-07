@@ -9,7 +9,7 @@ import banner from '../assets/the_wire_banner.png';
 const OverviewHeader = () => {
   return (
     <div
-      className="h-[55rem] sm:h-[38rem] md:h-[36rem] mx-auto max-w-8xl bg-cover shadow-md hero-pattern"
+      className="h-[56rem] sm:h-[38rem] md:h-[36rem] mx-auto max-w-8xl bg-cover shadow-md hero-pattern"
       style={{
         backgroundImage: `linear-gradient(100deg, rgba(43, 37, 37, 0.92) 38%, rgba(43, 37, 37, 0.92)), url(${banner})`,
       }}
@@ -23,7 +23,7 @@ const OverviewHeader = () => {
             alt="movie poster"
           />
         </div>
-        <div className="col-span-1 sm:col-span-2 md:col-span-8 h-full flex flex-col pl-6 py-4 sm:py-14 ">
+        <div className="col-span-1 sm:col-span-2 md:col-span-8 flex flex-col pl-6 py-4 sm:py-14 ">
           <h1 className="text-white text-4xl font-semibold pb-1">
             The Wire <span className="font-normal text-gray-300">(2002)</span>
           </h1>
