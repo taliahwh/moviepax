@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
+import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
+
+import { getTrendingToday, getTrendingThisWeek } from '../actions/mediaActions';
 
 import { LeftArrow, RightArrow } from './Arrows';
-import MovieCard from './MovieCard';
 
 const getItems = () =>
   Array(20)
@@ -11,11 +14,27 @@ const getItems = () =>
     .map((_, ind) => ({ id: `element-${ind}` }));
 
 const TrendingSection = () => {
-  const [items, setItems] = React.useState(getItems);
-  const [selected, setSelected] = React.useState([]);
-  const [position, setPosition] = React.useState(0);
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const [items, setItems] = useState(getItems);
+  const [selected, setSelected] = useState([]);
+  const [position, setPosition] = useState(0);
 
   const isItemSelected = (id) => !!selected.find((el) => el === id);
+
+  const {
+    loading: loadingTrendingToday,
+    success: trendingTodaySuccess,
+    trendingToday,
+    error,
+  } = useSelector((state) => state.trendingToday);
+
+  const {
+    loading: loadingTrendingThisWeek,
+    success: trendingThisWeekSuccess,
+    trendingThisWeek,
+    error: errorTrendingThisWeek,
+  } = useSelector((state) => state.trendingToday);
 
   const handleClick =
     (id) =>
@@ -29,18 +48,21 @@ const TrendingSection = () => {
       );
     };
 
+  useEffect(() => {
+    if (location.pathname === '/trending/thisweek') {
+      dispatch(getTrendingThisWeek());
+    }
+    if (location.pathname === '/') {
+      dispatch(getTrendingToday());
+    }
+  }, [dispatch, location]);
+
   return (
-    <div className="flex flex-col space-y-2 h-[28rem] mx-auto max-w-8xl px-8 pt-12  sm:py-8 sm:px-10 md:px-20 ">
+    <div className="flex flex-col space-y-2 h-[30rem] mx-auto max-w-8xl px-8 pt-12  sm:py-8 sm:px-10 md:px-20 ">
       {/* Header */}
       <div className="flex space-x-5 items-center pb-4">
         <h3 className="text-2xl font-semibold text-secondary">Trending</h3>
 
-        {/* <div className="space-x-3 border-1 border-secondary rounded-full hidden md:flex">
-          <button className="active bg-secondary px-5 py-1 rounded-full font-semibold text-white">
-            Today
-          </button>
-          <button className="px-5 py-1 font-semibold">This Week</button>
-        </div> */}
         <div
           className="hidden md:inline-flex shadow-sm border-secondary border-1 rounded-full space-x-3"
           role="group"
@@ -74,35 +96,63 @@ const TrendingSection = () => {
       </div>
 
       {/* Content */}
-      {/* <div className="grid grid-cols-6 gap-5"> */}
-      <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-        {items.map(({ id }) => (
-          <Card
-            itemId={id} // NOTE: itemId is required for track items
-            title={id}
-            key={id}
-            onClick={handleClick(id)}
-            selected={isItemSelected(id)}
-          />
-        ))}
-      </ScrollMenu>
+
+      {trendingTodaySuccess && (
+        <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+          {/* Map over Treding and display MovieCards */}
+          {trendingToday.results.map((item) => (
+            <MovieCard
+              itemId={item.id} // NOTE: itemId is required for track items
+              title={item.id}
+              key={item.id}
+              onClick={handleClick(item.id)}
+              selected={isItemSelected(item.id)}
+              item={item}
+            />
+          ))}
+        </ScrollMenu>
+      )}
+
       <div className="scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300 h-32 overflow-y-scroll"></div>
     </div>
     // </div>
   );
 };
 
-const Card = ({ onClick }) => {
+const MovieCard = ({ onClick, item }) => {
   const visibility = React.useContext(VisibilityContext);
 
   return (
     <div
       onClick={() => onClick(visibility)}
-      className="flex space-x-2"
+      // Implement fade-in transition
+      className="flex space-x-2 animate-fade-in"
       tabIndex={0}
     >
-      {/* Map over Treding and display MovieCards */}
-      <MovieCard />
+      <Link to={`/${item.id}`} className="flex flex-col w-44 ">
+        <div>
+          <img
+            className="w-40 rounded-lg mx-1"
+            src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`}
+            alt="movie cover"
+          />
+          <div className="rounded-full w-12 h-12 bg-secondary relative left-4 bottom-7 outline outline-offset-0 outline-green-500">
+            <p className="text-white font-semibold relative left-2.5 top-3 ">
+              {item.vote_average * 10}
+              <span className="text-xs font-semibold">%</span>
+            </p>
+          </div>
+        </div>
+
+        <div className="relative bottom-6">
+          <p className="font-semibold text-lg px-3">
+            {item.title || item.name}
+          </p>
+          <p className="font-light text-md text-gray-500 px-3">
+            {moment(item.release_date).format('MMM d, YYYY')}
+          </p>
+        </div>
+      </Link>
     </div>
   );
 };

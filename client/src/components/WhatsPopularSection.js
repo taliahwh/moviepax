@@ -1,9 +1,12 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
+import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
+
+import { getPopularStreaming } from '../actions/mediaActions';
 
 import { LeftArrow, RightArrow } from './Arrows';
-import MovieCard from './MovieCard';
 
 const getItems = () =>
   Array(20)
@@ -11,10 +14,18 @@ const getItems = () =>
     .map((_, ind) => ({ id: `element-${ind}` }));
 
 const WhatsPopularSection = () => {
-  const [items, setItems] = React.useState(getItems);
-  const [selected, setSelected] = React.useState([]);
+  const dispatch = useDispatch();
+  const [items, setItems] = useState(getItems);
+  const [selected, setSelected] = useState([]);
 
   const isItemSelected = (id) => !!selected.find((el) => el === id);
+
+  const {
+    loading: loadingPopularStreaming,
+    success: popularStreamingSuccess,
+    popularStreaming,
+    error,
+  } = useSelector((state) => state.popularStreaming);
 
   const handleClick =
     (id) =>
@@ -27,8 +38,12 @@ const WhatsPopularSection = () => {
           : currentSelected.concat(id)
       );
     };
+
+  useEffect(() => {
+    dispatch(getPopularStreaming());
+  }, [dispatch]);
   return (
-    <div className="w-full flex flex-col space-y-2 h-[30rem] mx-auto max-w-8xl px-8 pt-12  sm:py-8 sm:px-10 md:px-20 ">
+    <div className="w-full flex flex-col space-y-2 h-[31rem] mx-auto max-w-8xl px-8 pt-12  sm:py-8 sm:px-10 md:px-20 ">
       {/* Header */}
       <div className="flex space-x-5 items-center pb-4 ">
         <h3 className="text-2xl font-semibold text-secondary">
@@ -89,34 +104,58 @@ const WhatsPopularSection = () => {
       </div>
 
       {/* Content */}
-      <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-        {items.map(({ id }) => (
-          <Card
-            itemId={id} // NOTE: itemId is required for track items
-            title={id}
-            key={id}
-            onClick={handleClick(id)}
-            selected={isItemSelected(id)}
-          />
-        ))}
-      </ScrollMenu>
+      {popularStreamingSuccess && (
+        <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+          {popularStreaming.results.map((item) => (
+            <MovieCard
+              itemId={item.id}
+              title={item.id}
+              key={item.id}
+              onClick={handleClick(item.id)}
+              selected={isItemSelected(item.id)}
+              item={item}
+            />
+          ))}
+        </ScrollMenu>
+      )}
     </div>
   );
 };
 
-function Card({ onClick }) {
+function MovieCard({ onClick, item }) {
   const visibility = React.useContext(VisibilityContext);
 
   return (
-    <div className="">
-      <div
-        onClick={() => onClick(visibility)}
-        className="flex space-x-2"
-        tabIndex={0}
-      >
-        {/* Map over Treding and display MovieCards */}
-        <MovieCard />
-      </div>
+    <div
+      onClick={() => onClick(visibility)}
+      // Implement fade-in transition
+      className="flex space-x-2 animate-fade-in"
+      tabIndex={0}
+    >
+      <Link to={`/${item.id}`} className="flex flex-col w-44 ">
+        <div>
+          <img
+            className="w-40 rounded-lg mx-1"
+            src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`}
+            alt="movie cover"
+          />
+          <div className="rounded-full w-12 h-12 bg-secondary relative left-4 bottom-7 outline outline-offset-0 outline-green-500">
+            <p className="text-white font-semibold relative left-2.5 top-3 ">
+              {item.vote_average * 10}
+              <span className="text-xs font-semibold">%</span>
+            </p>
+          </div>
+        </div>
+
+        <div className="relative bottom-6">
+          <p className="font-semibold text-lg px-3">
+            {item.title || item.name}
+          </p>
+          <p className="font-light text-md text-gray-500 px-3">
+            {moment(item.first_air_date).format('MMM d, YYYY')}
+          </p>
+        </div>
+      </Link>
     </div>
   );
 }
