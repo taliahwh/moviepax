@@ -62,7 +62,7 @@ const WhatsPopularSection = () => {
                 : 'py-1 px-4 text-md font-semibold bg-white text-secondary rounded-full'
             }
           >
-            Streaming
+            On TV
           </NavLink>
           <NavLink
             to="/popular/ontv"
@@ -73,29 +73,7 @@ const WhatsPopularSection = () => {
                 : 'py-1 px-4 text-md font-semibold bg-white text-secondary rounded-full'
             }
           >
-            On TV
-          </NavLink>
-          <NavLink
-            to="/popular/forrent"
-            // className={(state) => console.log(state)}
-            className={({ isActive }) =>
-              isActive
-                ? 'transition ease-in delay-200 py-1 px-4 text-md font-semibold bg-secondary text-white rounded-full'
-                : 'py-1 px-4 text-md font-semibold bg-white text-secondary rounded-full'
-            }
-          >
-            For Rent
-          </NavLink>
-          <NavLink
-            to="/popular/intheatres"
-            // className={(state) => console.log(state)}
-            className={({ isActive }) =>
-              isActive
-                ? 'transition ease-in delay-200 py-1 px-4 text-md font-semibold bg-secondary text-white rounded-full'
-                : 'py-1 px-4 text-md font-semibold bg-white text-secondary rounded-full'
-            }
-          >
-            In Theatres
+            Movies
           </NavLink>
         </div>
         <div className="md:hidden">
@@ -196,7 +174,7 @@ const Dropdown = () => {
               to="/"
               className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
             >
-              Streaming
+              On TV
             </Link>
           </li>
           <li>
@@ -204,23 +182,7 @@ const Dropdown = () => {
               to="/"
               className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
             >
-              On Tv
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/"
-              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-            >
-              For Rent
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/"
-              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-            >
-              In Theatres
+              Movies
             </Link>
           </li>
         </ul>
