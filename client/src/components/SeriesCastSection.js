@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 
 /**
@@ -21,6 +21,7 @@ const getItems = () =>
  * @param {String} props.size
  */
 const SeriesCastSection = ({ item, cast, details, keywords }) => {
+  const location = useLocation();
   const [items, setItems] = useState(getItems);
   const [selected, setSelected] = useState([]);
 
@@ -43,7 +44,14 @@ const SeriesCastSection = ({ item, cast, details, keywords }) => {
         <h3 className="text-2xl font-semibold text-secondary">
           Top Billed Cast
         </h3>
-        <Link to={`/cast/${item.id}`} className="underline">
+        <Link
+          to={
+            location.pathname.includes('/movie')
+              ? `/movie/cast/${item.id}`
+              : `/tv/cast/${item.id}`
+          }
+          className="underline"
+        >
           View full cast
         </Link>
       </div>
