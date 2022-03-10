@@ -42,6 +42,7 @@ const DetailsScreen = () => {
         <>
           <OverviewHeader item={movieDetails.data} />
           <SeriesCastSection
+            item={movieDetails.data}
             cast={movieCast.data.cast}
             details={movieDetails.data}
             keywords={movieKeywords.data.keywords}

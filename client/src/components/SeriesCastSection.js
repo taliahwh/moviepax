@@ -20,7 +20,7 @@ const getItems = () =>
  * @param {String} props.title
  * @param {String} props.size
  */
-const SeriesCastSection = ({ cast, details, keywords }) => {
+const SeriesCastSection = ({ item, cast, details, keywords }) => {
   const [items, setItems] = useState(getItems);
   const [selected, setSelected] = useState([]);
 
@@ -43,7 +43,7 @@ const SeriesCastSection = ({ cast, details, keywords }) => {
         <h3 className="text-2xl font-semibold text-secondary">
           Top Billed Cast
         </h3>
-        <Link to="/cast/:id" className="underline">
+        <Link to={`/cast/${item.id}`} className="underline">
           View full cast
         </Link>
       </div>
@@ -85,7 +85,11 @@ function Card({ onClick, actor }) {
         <Link to={`/actor/${actor.id}`} className="w-36 h-70 rounded-lg">
           <img
             className="h-42 w-full rounded-t-lg"
-            src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${actor.profile_path}`}
+            src={
+              actor.profile_path
+                ? `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${actor.profile_path}`
+                : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
+            }
             alt=""
           />
           <div className="flex flex-col pt-2 pb-3 px-2 bg-white shadow-md rounded-b-md">
