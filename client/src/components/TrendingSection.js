@@ -4,6 +4,10 @@ import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 
+import {
+  TRENDING_TODAY_FAILURE,
+  TRENDING_THIS_WEEK_FAILURE,
+} from '../constants/mediaContstants';
 import { getTrendingToday, getTrendingThisWeek } from '../actions/mediaActions';
 
 import { LeftArrow, RightArrow } from './Arrows';
@@ -34,7 +38,7 @@ const TrendingSection = () => {
     success: trendingThisWeekSuccess,
     trendingThisWeek,
     error: errorTrendingThisWeek,
-  } = useSelector((state) => state.trendingToday);
+  } = useSelector((state) => state.trendingThisWeek);
 
   const handleClick =
     (id) =>
@@ -50,9 +54,11 @@ const TrendingSection = () => {
 
   useEffect(() => {
     if (location.pathname === '/trending/thisweek') {
+      dispatch({ type: TRENDING_TODAY_FAILURE });
       dispatch(getTrendingThisWeek());
     }
     if (location.pathname === '/') {
+      dispatch({ type: TRENDING_THIS_WEEK_FAILURE });
       dispatch(getTrendingToday());
     }
   }, [dispatch, location]);
@@ -101,6 +107,22 @@ const TrendingSection = () => {
         <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
           {/* Map over Treding and display MovieCards */}
           {trendingToday.results.map((item) => (
+            <MovieCard
+              itemId={item.id} // NOTE: itemId is required for track items
+              title={item.id}
+              key={item.id}
+              onClick={handleClick(item.id)}
+              selected={isItemSelected(item.id)}
+              item={item}
+            />
+          ))}
+        </ScrollMenu>
+      )}
+
+      {trendingThisWeekSuccess && (
+        <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+          {/* Map over Treding and display MovieCards */}
+          {trendingThisWeek.results.map((item) => (
             <MovieCard
               itemId={item.id} // NOTE: itemId is required for track items
               title={item.id}
