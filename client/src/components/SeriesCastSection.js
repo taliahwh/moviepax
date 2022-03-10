@@ -39,10 +39,13 @@ const SeriesCastSection = ({ cast, details, keywords }) => {
   return (
     <div className="flex flex-col space-y-2 h-[95rem] lg:h-[38rem] bg-gray-100 mx-auto max-w-8xl px-8 pt-12  sm:py-8 sm:px-10 md:px-12">
       {/* Header */}
-      <div className="flex space-x-5 items-center pb-4">
+      <div className="flex space-x-4 items-center pb-4">
         <h3 className="text-2xl font-semibold text-secondary">
           Top Billed Cast
         </h3>
+        <Link to="/cast/:id" className="underline">
+          View full cast
+        </Link>
       </div>
       {/* Content */}
       <div className="grid grid-cols-1  lg:grid-cols-11 gap-4">
