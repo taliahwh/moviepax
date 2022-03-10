@@ -5,9 +5,12 @@ import {
   TRENDING_THIS_WEEK_REQUEST,
   TRENDING_THIS_WEEK_SUCCESS,
   TRENDING_THIS_WEEK_FAILURE,
-  POPULAR_STREAMING_REQUEST,
-  POPULAR_STREAMING_SUCCESS,
-  POPULAR_STREAMING_FAILURE,
+  POPULAR_TV_REQUEST,
+  POPULAR_TV_SUCCESS,
+  POPULAR_TV_FAILURE,
+  POPULAR_MOVIES_REQUEST,
+  POPULAR_MOVIES_SUCCESS,
+  POPULAR_MOVIES_FAILURE,
   MOVIE_DETAILS_REQUEST,
   MOVIE_DETAILS_SUCCESS,
   MOVIE_DETAILS_FAILURE,
@@ -17,6 +20,15 @@ import {
   MOVIE_KEYWORDS_REQUEST,
   MOVIE_KEYWORDS_SUCCESS,
   MOVIE_KEYWORDS_FAILURE,
+  TV_DETAILS_REQUEST,
+  TV_DETAILS_SUCCESS,
+  TV_DETAILS_FAILURE,
+  TV_CAST_REQUEST,
+  TV_CAST_SUCCESS,
+  TV_CAST_FAILURE,
+  TV_KEYWORDS_REQUEST,
+  TV_KEYWORDS_SUCCESS,
+  TV_KEYWORDS_FAILURE,
   ACTOR_DETAILS_REQUEST,
   ACTOR_DETAILS_SUCCESS,
   ACTOR_DETAILS_FAILURE,
@@ -58,27 +70,41 @@ export const trendingThisWeekReducer = (
   }
 };
 
-export const popularStreamingReducer = (
-  state = { popularStreaming: [] },
-  action
-) => {
+export const popularTVReducer = (state = { popularTV: [] }, action) => {
   switch (action.type) {
-    case POPULAR_STREAMING_REQUEST:
-      return { loading: true, popularStreaming: [] };
-    case POPULAR_STREAMING_SUCCESS:
+    case POPULAR_TV_REQUEST:
+      return { loading: true, popularTV: [] };
+    case POPULAR_TV_SUCCESS:
       return {
         loading: false,
         success: true,
-        popularStreaming: action.payload,
+        popularTV: action.payload,
       };
-    case POPULAR_STREAMING_FAILURE:
+    case POPULAR_TV_FAILURE:
       return { loading: false, error: action.payload };
     default:
       return state;
   }
 };
 
-// -------------------------------------- Movie Reducers
+export const popularMoviesReducer = (state = { popularMovies: [] }, action) => {
+  switch (action.type) {
+    case POPULAR_MOVIES_REQUEST:
+      return { loading: true, popularTV: [] };
+    case POPULAR_MOVIES_SUCCESS:
+      return {
+        loading: false,
+        success: true,
+        popularMovies: action.payload,
+      };
+    case POPULAR_MOVIES_FAILURE:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+// -------------------------------------- Actor Reducers
 
 export const actorDetailsReducer = (state = {}, action) => {
   switch (action.type) {
@@ -113,6 +139,8 @@ export const actorCreditsReducer = (state = {}, action) => {
       return state;
   }
 };
+
+// -------------------------------------- Movie Reducers
 
 export const movieDetailsReducer = (state = {}, action) => {
   switch (action.type) {
@@ -159,6 +187,59 @@ export const movieKeywordsReducer = (state = {}, action) => {
         movieKeywords: action.payload,
       };
     case MOVIE_KEYWORDS_FAILURE:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+// -------------------------------------- TV Reducers
+
+export const tvDetailsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case TV_DETAILS_REQUEST:
+      return { loading: true };
+    case TV_DETAILS_SUCCESS:
+      return {
+        loading: false,
+        success: true,
+        tvDetails: action.payload,
+      };
+    case TV_DETAILS_FAILURE:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const tvCastReducer = (state = {}, action) => {
+  switch (action.type) {
+    case TV_CAST_REQUEST:
+      return { loading: true };
+    case TV_CAST_SUCCESS:
+      return {
+        loading: false,
+        success: true,
+        tvCast: action.payload,
+      };
+    case TV_CAST_FAILURE:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const tvKeywordsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case TV_KEYWORDS_REQUEST:
+      return { loading: true };
+    case TV_KEYWORDS_SUCCESS:
+      return {
+        loading: false,
+        success: true,
+        tvKeywords: action.payload,
+      };
+    case TV_KEYWORDS_FAILURE:
       return { loading: false, error: action.payload };
     default:
       return state;
