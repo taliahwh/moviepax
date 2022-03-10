@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 
-import { getPopularStreaming } from '../actions/mediaActions';
+import {
+  POPULAR_MOVIES_FAILURE,
+  POPULAR_TV_FAILURE,
+} from '../constants/mediaContstants';
+import { getPopularTV, getPopularMovies } from '../actions/mediaActions';
 
 import { LeftArrow, RightArrow } from './Arrows';
 
@@ -15,17 +19,25 @@ const getItems = () =>
 
 const WhatsPopularSection = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const [items, setItems] = useState(getItems);
   const [selected, setSelected] = useState([]);
 
   const isItemSelected = (id) => !!selected.find((el) => el === id);
 
   const {
-    loading: loadingPopularStreaming,
-    success: popularStreamingSuccess,
-    popularStreaming,
-    error,
-  } = useSelector((state) => state.popularStreaming);
+    loading: loadingPopularTV,
+    success: popularTVSuccess,
+    popularTV,
+    error: errorPopularTV,
+  } = useSelector((state) => state.popularTV);
+
+  const {
+    loading: loadingPopularMovies,
+    success: popularMoviesSuccess,
+    popularMovies,
+    error: errorPopularMovies,
+  } = useSelector((state) => state.popularMovies);
 
   const handleClick =
     (id) =>
@@ -40,8 +52,16 @@ const WhatsPopularSection = () => {
     };
 
   useEffect(() => {
-    dispatch(getPopularStreaming());
-  }, [dispatch]);
+    if (location.pathname === '/popular/ontv' || location.pathname === '/') {
+      dispatch({ type: POPULAR_MOVIES_FAILURE });
+      dispatch(getPopularTV());
+    }
+    if (location.pathname === '/popular/movies') {
+      dispatch({ type: POPULAR_TV_FAILURE });
+      dispatch(getPopularMovies());
+    }
+  }, [dispatch, location]);
+
   return (
     <div className="w-full flex flex-col space-y-2 h-[33rem] mx-auto max-w-8xl px-8 pt-12  sm:py-8 sm:px-10 md:px-20 ">
       {/* Header */}
@@ -54,7 +74,7 @@ const WhatsPopularSection = () => {
           role="group"
         >
           <NavLink
-            to="/"
+            to="/popular/ontv"
             // className={(state) => console.log(state)}
             className={({ isActive }) =>
               isActive
@@ -65,7 +85,7 @@ const WhatsPopularSection = () => {
             On TV
           </NavLink>
           <NavLink
-            to="/popular/ontv"
+            to="/popular/movies"
             // className={(state) => console.log(state)}
             className={({ isActive }) =>
               isActive
@@ -82,9 +102,24 @@ const WhatsPopularSection = () => {
       </div>
 
       {/* Content */}
-      {popularStreamingSuccess && (
+      {popularTVSuccess && (
         <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-          {popularStreaming.results.map((item) => (
+          {popularTV.results.map((item) => (
+            <MovieCard
+              itemId={item.id}
+              title={item.id}
+              key={item.id}
+              onClick={handleClick(item.id)}
+              selected={isItemSelected(item.id)}
+              item={item}
+            />
+          ))}
+        </ScrollMenu>
+      )}
+
+      {popularMoviesSuccess && (
+        <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+          {popularMovies.results.map((item) => (
             <MovieCard
               itemId={item.id}
               title={item.id}
@@ -106,11 +141,11 @@ function MovieCard({ onClick, item }) {
   return (
     <div
       onClick={() => onClick(visibility)}
-      // Implement fade-in transition
-      className="flex space-x-2 animate-fade-in"
+      // TODO Implement fade-in transition
+      className="flex space-x-2"
       tabIndex={0}
     >
-      <Link to={`/${item.id}`} className="flex flex-col w-44 ">
+      <Link to={`/${item.id}`} className="flex flex-col w-44">
         <div>
           <img
             className="w-40 rounded-lg mx-1"
@@ -171,7 +206,7 @@ const Dropdown = () => {
         <ul className="py-1" aria-labelledby="dropdownButton1">
           <li>
             <Link
-              to="/"
+              to="/popular/ontv"
               className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
             >
               On TV
@@ -179,7 +214,7 @@ const Dropdown = () => {
           </li>
           <li>
             <Link
-              to="/"
+              to="/popular/movies"
               className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
             >
               Movies
