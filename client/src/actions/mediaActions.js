@@ -7,24 +7,36 @@ import {
   TRENDING_THIS_WEEK_REQUEST,
   TRENDING_THIS_WEEK_SUCCESS,
   TRENDING_THIS_WEEK_FAILURE,
-  POPULAR_STREAMING_REQUEST,
-  POPULAR_STREAMING_SUCCESS,
-  POPULAR_STREAMING_FAILURE,
-  MOVIE_DETAILS_REQUEST,
-  MOVIE_DETAILS_SUCCESS,
-  MOVIE_DETAILS_FAILURE,
+  POPULAR_TV_REQUEST,
+  POPULAR_TV_SUCCESS,
+  POPULAR_TV_FAILURE,
+  POPULAR_MOVIES_REQUEST,
+  POPULAR_MOVIES_SUCCESS,
+  POPULAR_MOVIES_FAILURE,
   ACTOR_DETAILS_REQUEST,
   ACTOR_DETAILS_SUCCESS,
   ACTOR_DETAILS_FAILURE,
   ACTOR_CREDITS_REQUEST,
   ACTOR_CREDITS_SUCCESS,
   ACTOR_CREDITS_FAILURE,
+  MOVIE_DETAILS_REQUEST,
+  MOVIE_DETAILS_SUCCESS,
+  MOVIE_DETAILS_FAILURE,
   MOVIE_CAST_REQUEST,
   MOVIE_CAST_SUCCESS,
   MOVIE_CAST_FAILURE,
   MOVIE_KEYWORDS_REQUEST,
   MOVIE_KEYWORDS_SUCCESS,
   MOVIE_KEYWORDS_FAILURE,
+  TV_DETAILS_REQUEST,
+  TV_DETAILS_SUCCESS,
+  TV_DETAILS_FAILURE,
+  TV_CAST_REQUEST,
+  TV_CAST_SUCCESS,
+  TV_CAST_FAILURE,
+  TV_KEYWORDS_REQUEST,
+  TV_KEYWORDS_SUCCESS,
+  TV_KEYWORDS_FAILURE,
 } from '../constants/mediaContstants';
 
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
@@ -69,18 +81,18 @@ export const getTrendingThisWeek = () => async (dispatch) => {
   }
 };
 
-export const getPopularStreaming = () => async (dispatch) => {
+export const getPopularTV = () => async (dispatch) => {
   try {
-    dispatch({ type: POPULAR_STREAMING_REQUEST });
+    dispatch({ type: POPULAR_TV_REQUEST });
 
     const { data } = await axios.get(
       `${TMDB_BASE_URL}/tv/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
     );
 
-    dispatch({ type: POPULAR_STREAMING_SUCCESS, payload: data });
+    dispatch({ type: POPULAR_TV_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
-      type: POPULAR_STREAMING_FAILURE,
+      type: POPULAR_TV_FAILURE,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -88,6 +100,28 @@ export const getPopularStreaming = () => async (dispatch) => {
     });
   }
 };
+
+export const getPopularMovies = () => async (dispatch) => {
+  try {
+    dispatch({ type: POPULAR_MOVIES_REQUEST });
+
+    const { data } = await axios.get(
+      `${TMDB_BASE_URL}/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    );
+
+    dispatch({ type: POPULAR_MOVIES_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: POPULAR_MOVIES_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+// -------------------------------------- Actor Details
 
 export const getActorDetails = (id) => async (dispatch) => {
   try {
@@ -162,6 +196,52 @@ export const getMovieDetails = (id) => async (dispatch) => {
     });
     dispatch({
       type: MOVIE_KEYWORDS_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getTVDetails = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: TV_DETAILS_REQUEST });
+    dispatch({ type: TV_CAST_REQUEST });
+    dispatch({ type: TV_KEYWORDS_REQUEST });
+
+    const detailsData = await axios.get(
+      `${TMDB_BASE_URL}/tv/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    );
+
+    const castData = await axios.get(
+      `${TMDB_BASE_URL}/tv/${id}/aggregate_credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    );
+
+    const keywordsData = await axios.get(
+      `${TMDB_BASE_URL}/tv/${id}/keywords?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    );
+
+    dispatch({ type: TV_DETAILS_SUCCESS, payload: detailsData });
+    dispatch({ type: TV_CAST_SUCCESS, payload: castData });
+    dispatch({ type: TV_KEYWORDS_SUCCESS, payload: keywordsData });
+  } catch (error) {
+    dispatch({
+      type: TV_DETAILS_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: TV_CAST_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: TV_KEYWORDS_FAILURE,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
