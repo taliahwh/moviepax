@@ -5,10 +5,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import {
   trendingTodayReducer,
   trendingThisWeekReducer,
-  popularStreamingReducer,
+  popularTVReducer,
+  popularMoviesReducer,
   movieDetailsReducer,
   movieCastReducer,
   movieKeywordsReducer,
+  tvDetailsReducer,
+  tvCastReducer,
+  tvKeywordsReducer,
   actorDetailsReducer,
   actorCreditsReducer,
 } from './reducers/mediaReducers';
@@ -16,12 +20,16 @@ import {
 const reducer = combineReducers({
   trendingToday: trendingTodayReducer,
   trendingThisWeek: trendingThisWeekReducer,
-  popularStreaming: popularStreamingReducer,
+  popularTV: popularTVReducer,
+  popularMovies: popularMoviesReducer,
   actorDetails: actorDetailsReducer,
   actorCredits: actorCreditsReducer,
   movieDetails: movieDetailsReducer,
   movieCast: movieCastReducer,
   movieKeywords: movieKeywordsReducer,
+  tvDetails: tvDetailsReducer,
+  tvCast: tvCastReducer,
+  tvKeywords: tvKeywordsReducer,
 });
 
 // Initial loading when the redux store is loaded.
