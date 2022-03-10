@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
@@ -43,7 +43,7 @@ const WhatsPopularSection = () => {
     dispatch(getPopularStreaming());
   }, [dispatch]);
   return (
-    <div className="w-full flex flex-col space-y-2 h-[31rem] mx-auto max-w-8xl px-8 pt-12  sm:py-8 sm:px-10 md:px-20 ">
+    <div className="w-full flex flex-col space-y-2 h-[33rem] mx-auto max-w-8xl px-8 pt-12  sm:py-8 sm:px-10 md:px-20 ">
       {/* Header */}
       <div className="flex space-x-5 items-center pb-4 ">
         <h3 className="text-2xl font-semibold text-secondary">
