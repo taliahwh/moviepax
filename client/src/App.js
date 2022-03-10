@@ -5,6 +5,7 @@ import Header from './components/Header';
 import HomeScreen from './screens/HomeScreen';
 import DetailsScreen from './screens/DetailsScreen';
 import ActorScreen from './screens/ActorScreen';
+import CastScreen from './screens/CastScreen';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/trailers/intheatres" exact element={<HomeScreen />} />
         <Route path="/:id" exact element={<DetailsScreen />} />
         <Route path="/actor/:id" exact element={<ActorScreen />} />
+        <Route path="/cast/:id" exact element={<CastScreen />} />
       </Routes>
     </BrowserRouter>
   );
