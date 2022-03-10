@@ -14,7 +14,6 @@ const HomeScreen = () => {
       <TrendingSection />
       <WhatsPopularSection />
       <LatestTrailersSection />
-      <FreeToWatchSection />
       <Footer />
     </div>
   );
