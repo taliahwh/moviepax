@@ -151,7 +151,12 @@ const MovieCard = ({ onClick, item }) => {
       className="flex space-x-2 animate-fade-in"
       tabIndex={0}
     >
-      <Link to={`/${item.id}`} className="flex flex-col w-44 ">
+      <Link
+        to={
+          item.media_type === 'movie' ? `/movie/${item.id}` : `/tv/${item.id}`
+        }
+        className="flex flex-col w-44 "
+      >
         <div>
           <img
             className="w-40 rounded-lg mx-1"
@@ -220,7 +225,7 @@ const Dropdown = () => {
           </li>
           <li>
             <Link
-              to="/"
+              to="/trending/thisweek"
               className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
             >
               This Week
