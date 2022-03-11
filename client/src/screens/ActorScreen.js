@@ -61,7 +61,7 @@ const ActorScreen = () => {
               <img
                 className="h-[20rem] md:h-[30rem] rounded-lg m-auto"
                 src={
-                  actorDetails.dataprofile_path
+                  actorDetails.data.profile_path
                     ? `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${actorDetails.data.profile_path}`
                     : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
                 }
@@ -83,7 +83,7 @@ const ActorScreen = () => {
 
                 <div className="flex flex-col">
                   <h2 className="text-md font-semibold">Known Credits</h2>
-                  <p>43</p>
+                  <p>{actorCredits.data.cast.length}</p>
                 </div>
 
                 {actorDetails.data.gender === 1 ? (
