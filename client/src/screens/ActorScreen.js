@@ -57,10 +57,14 @@ const ActorScreen = () => {
         {/* Actor Personal Info */}
         {successActorDetails && successActorCredits && (
           <div className="px-8 pt-8 pb-6 sm:px-10 md:px-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-11 gap-0 md:gap-4">
-            <div className="col-span-1 sm:col-span-1 md:col-span-3 h-full ">
+            <div className="col-span-1 sm:col-span-1 md:col-span-3 h-screen ">
               <img
                 className="h-[20rem] md:h-[30rem] rounded-lg m-auto"
-                src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${actorDetails.data.profile_path}`}
+                src={
+                  actorDetails.dataprofile_path
+                    ? `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${actorDetails.data.profile_path}`
+                    : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
+                }
                 alt="actor"
               />
 
@@ -72,7 +76,9 @@ const ActorScreen = () => {
                 <div className="flex flex-col">
                   <h1 className="font-semibold text-xl pb-3">Personal Info</h1>
                   <h2 className="text-md font-semibold">Known For</h2>
-                  <p>Acting</p>
+                  {actorDetails.data.known_for_department && (
+                    <p>{actorDetails.data.known_for_department}</p>
+                  )}
                 </div>
 
                 <div className="flex flex-col">
@@ -94,23 +100,29 @@ const ActorScreen = () => {
                   ''
                 )}
 
-                <div className="flex flex-col">
-                  <h2 className="text-md font-semibold">Birthday</h2>
-                  {/* TODO Birthdate with moment */}
-                  <p>01-09-1996 (25 years old)</p>
-                </div>
+                {actorDetails.data.date_of_birth && (
+                  <div className="flex flex-col">
+                    <h2 className="text-md font-semibold">Birthday</h2>
+                    {/* TODO Birthdate with moment */}
+                    <p>01-09-1996 (25 years old)</p>
+                  </div>
+                )}
 
-                <div className="flex flex-col">
-                  <h2 className="text-md font-semibold">Place of Birth</h2>
-                  <p>{actorDetails.data.place_of_birth}</p>
-                </div>
+                {actorDetails.data.place_of_birth && (
+                  <div className="flex flex-col">
+                    <h2 className="text-md font-semibold">Place of Birth</h2>
+                    <p>{actorDetails.data.place_of_birth}</p>
+                  </div>
+                )}
 
-                <div className="flex flex-col">
-                  <h2 className="text-md font-semibold">Also Known As</h2>
-                  {actorDetails.data.also_known_as.map((name, index) => (
-                    <p key={index}>{name}</p>
-                  ))}
-                </div>
+                {actorDetails.data.also_known_as && (
+                  <div className="flex flex-col">
+                    <h2 className="text-md font-semibold">Also Known As</h2>
+                    {actorDetails.data.also_known_as.map((name, index) => (
+                      <p key={index}>{name}</p>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
             {/* Biography and Acting */}
@@ -123,7 +135,8 @@ const ActorScreen = () => {
                 Biography
               </h4>
               <p className="text-base text-secondary">
-                {actorDetails.data.biography}
+                {actorDetails.data.biography ||
+                  `There is no bigography for ${actorDetails.data.name} available.`}
               </p>
               <h4 className="py-1 font-semibold text-xl text-secondary pt-6">
                 Known For
