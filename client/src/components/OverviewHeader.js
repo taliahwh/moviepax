@@ -1,7 +1,9 @@
 import React from 'react';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,6 +20,13 @@ const OverviewHeader = ({ item }) => {
       {/* Content Area */}
       <div className="px-8 pt-8 pb-6 sm:px-10 md:px-10 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-11 gap-4">
         <div className="col-span-1 sm:col-span-1 md:col-span-3 h-full">
+          <Link to={'/'} className="font-medium text-neutral-300">
+            <FontAwesomeIcon
+              icon={faArrowLeft}
+              className="text-neutral-300 pr-1 text-sm"
+            />
+            Back to Home
+          </Link>
           <img
             className="h-[20rem] md:h-[30rem] rounded-lg m-auto"
             src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${item.poster_path}`}
