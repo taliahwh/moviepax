@@ -75,7 +75,6 @@ const WhatsPopularSection = () => {
         >
           <NavLink
             to="/popular/ontv"
-            // className={(state) => console.log(state)}
             className={({ isActive }) =>
               isActive
                 ? 'transition ease-in delay-200 py-1 px-4 text-md font-semibold bg-secondary text-white rounded-full'
@@ -86,7 +85,6 @@ const WhatsPopularSection = () => {
           </NavLink>
           <NavLink
             to="/popular/movies"
-            // className={(state) => console.log(state)}
             className={({ isActive }) =>
               isActive
                 ? 'transition ease-in delay-200 py-1 px-4 text-md font-semibold bg-secondary text-white rounded-full'
@@ -145,7 +143,12 @@ function MovieCard({ onClick, item }) {
       className="flex space-x-2"
       tabIndex={0}
     >
-      <Link to={`/${item.id}`} className="flex flex-col w-44">
+      <Link
+        to={
+          item.media_type === 'movie' ? `/movie/${item.id}` : `/tv/${item.id}`
+        }
+        className="flex flex-col w-44 "
+      >
         <div>
           <img
             className="w-40 rounded-lg mx-1"
