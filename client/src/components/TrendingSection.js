@@ -152,9 +152,7 @@ const MovieCard = ({ onClick, item }) => {
       tabIndex={0}
     >
       <Link
-        to={
-          item.media_type === 'movie' ? `/movie/${item.id}` : `/tv/${item.id}`
-        }
+        to={item.media_type === 'tv' ? `/tv/${item.id}` : `/movie/${item.id}`}
         className="flex flex-col w-44 "
       >
         <div>
