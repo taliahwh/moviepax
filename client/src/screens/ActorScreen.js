@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 import KnownForCard from '../components/KnownForCard';
 import ActingSection from '../components/ActingSection';
 
-import { getActorDetails, getActorCredits } from '../actions/mediaActions';
+import { getActorDetails } from '../actions/mediaActions';
 
 const getItems = () =>
   Array(20)
@@ -130,15 +130,22 @@ const ActorScreen = () => {
               </h4>
 
               <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-                {items.map(({ id }) => (
-                  <Card
-                    itemId={id} // NOTE: itemId is required for track items
-                    title={id}
-                    key={id}
-                    onClick={handleClick(id)}
-                    selected={isItemSelected(id)}
-                  />
-                ))}
+                {actorCredits.data.cast
+                  .sort((a, b) => b.popularity - a.popularity)
+                  .slice(0, 9)
+                  .map(
+                    (credit, index) =>
+                      credit.original_title && (
+                        <Card
+                          itemId={credit.id} // NOTE: itemId is required for track items
+                          title={credit.id}
+                          key={index}
+                          onClick={handleClick(credit.id)}
+                          selected={isItemSelected(credit.id)}
+                          credit={credit}
+                        />
+                      )
+                  )}
               </ScrollMenu>
 
               <h4 className="py-1 font-semibold text-xl text-secondary pt-6">
@@ -154,19 +161,28 @@ const ActorScreen = () => {
   );
 };
 
-function Card({ onClick }) {
+function Card({ onClick, credit }) {
   const visibility = React.useContext(VisibilityContext);
 
+  const {
+    loading: loadingActorCredits,
+    success: successActorCredits,
+    error: errorActorCredits,
+    actorCredits,
+  } = useSelector((state) => state.actorCredits);
+
   return (
-    <div className="">
-      <div
-        onClick={() => onClick(visibility)}
-        className="pr-5 w-40 pb-5"
-        tabIndex={0}
-      >
-        {/* Map over Treding and display MovieCards */}
-        <KnownForCard />
-      </div>
+    <div>
+      {successActorCredits && (
+        <div
+          onClick={() => onClick(visibility)}
+          className="pr-5 w-40 pb-5"
+          tabIndex={0}
+        >
+          {/* Map over Treding and display MovieCards */}
+          <KnownForCard credit={credit} />
+        </div>
+      )}
     </div>
   );
 }

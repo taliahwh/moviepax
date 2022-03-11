@@ -6,7 +6,7 @@ const ActingSection = ({ credits }) => {
     .slice()
     .sort((a, b) => b.popularity - a.popularity);
 
-  console.log(sortedCredits);
+  // console.log(sortedCredits);
   return (
     <>
       {credits.map(
