@@ -43,7 +43,9 @@ const OverviewHeader = ({ item }) => {
               TV-MA
             </p>
             {/* TODO Map over genres and list them */}
-            <p>Crime, Drama</p>
+            {item.genres.map((genre) => (
+              <p>{genre.name}</p>
+            ))}
             <p>•</p>
             {/* TODO Convert minutes to hours and minutes*/}
             <p>1hr</p>
@@ -91,7 +93,7 @@ const OverviewHeader = ({ item }) => {
               <p className="text-base font-light text-white">{item.overview}</p>
             </>
           )}
-          {item.creator ? (
+          {item.creator && (
             <>
               {' '}
               <h4 className="pt-6 font-semibold text-md text-white">
@@ -99,7 +101,8 @@ const OverviewHeader = ({ item }) => {
               </h4>
               <p className="font-light text-white">Creator</p>
             </>
-          ) : item.created_by[0].name ? (
+          )}
+          {item.created_by && (
             <>
               {' '}
               <h4 className="pt-6 font-semibold text-md text-white">
@@ -107,13 +110,21 @@ const OverviewHeader = ({ item }) => {
               </h4>
               <p className="font-light text-white">Creator</p>
             </>
-          ) : (
-            ''
           )}
         </div>
       </div>
     </div>
   );
 };
+
+// : item.created_by[0].name ? (
+//   <>
+//     {' '}
+//     <h4 className="pt-6 font-semibold text-md text-white">
+//       {item.created_by[0].name}
+//     </h4>
+//     <p className="font-light text-white">Creator</p>
+//   </>
+// )
 
 export default OverviewHeader;
