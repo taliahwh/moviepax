@@ -11,19 +11,26 @@ const SeriesFactsSection = ({ details, keywords }) => {
           <p>{details.status}</p>
         </div>
 
-        <div className="flex flex-col">
-          <h2 className="text-md font-semibold">Network</h2>
-          <img
-            className="w-20"
-            src="https://www.themoviedb.org/t/p/h30/tuomPhY2UtuPTqqFnKMVHvSb724.png"
-            alt="hbo"
-          />
-        </div>
+        {details.networks && (
+          <div className="flex flex-col space-y-3">
+            <h2 className="text-md font-semibold">Network</h2>
+            {details.networks.map((network, index) => (
+              <img
+                key={index}
+                className="w-28"
+                src={`https://www.themoviedb.org/t/p/h50${network.logo_path}`}
+                alt="hbo"
+              />
+            ))}
+          </div>
+        )}
 
-        <div className="flex flex-col">
-          <h2 className="text-md font-semibold">Type</h2>
-          <p>{details.type}</p>
-        </div>
+        {details.type && (
+          <div className="flex flex-col">
+            <h2 className="text-md font-semibold">Type</h2>
+            <p>{details.type}</p>
+          </div>
+        )}
 
         <div className="flex flex-col">
           <h2 className="text-md font-semibold">Original Language</h2>
