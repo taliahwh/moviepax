@@ -100,11 +100,10 @@ const ActorScreen = () => {
                   ''
                 )}
 
-                {actorDetails.data.date_of_birth && (
+                {actorDetails.data.birthday && (
                   <div className="flex flex-col">
                     <h2 className="text-md font-semibold">Birthday</h2>
-                    {/* TODO Birthdate with moment */}
-                    <p>01-09-1996 (25 years old)</p>
+                    <p>{actorDetails.data.birthday}</p>
                   </div>
                 )}
 

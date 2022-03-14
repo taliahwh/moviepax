@@ -7,8 +7,6 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
-import banner from '../assets/the_wire_banner.png';
-
 const OverviewHeader = ({ item }) => {
   return (
     <div
@@ -35,7 +33,7 @@ const OverviewHeader = ({ item }) => {
         </div>
         <div className="col-span-1 sm:col-span-2 md:col-span-8 flex flex-col pl-6 py-4 sm:py-14 ">
           <h1 className="text-white text-4xl font-semibold pb-1">
-            {item.title}{' '}
+            {item.title || item.name}{' '}
             <span className="font-normal text-gray-300">
               ({moment(item.release_date).format('YYYY')})
             </span>
@@ -86,10 +84,32 @@ const OverviewHeader = ({ item }) => {
           <h3 className="py-5 text-base italic text-gray-400">
             {item.tagline}
           </h3>
-          <h4 className="py-1 font-medium text-xl text-white">Overview</h4>
-          <p className="text-base font-light text-white">{item.overview}</p>
-          <h4 className="pt-6 font-semibold text-md text-white">David Simon</h4>
-          <p className="font-light text-white">Creator</p>
+          {item.overview && (
+            <>
+              {' '}
+              <h4 className="py-1 font-medium text-xl text-white">Overview</h4>
+              <p className="text-base font-light text-white">{item.overview}</p>
+            </>
+          )}
+          {item.creator ? (
+            <>
+              {' '}
+              <h4 className="pt-6 font-semibold text-md text-white">
+                {item.creator}
+              </h4>
+              <p className="font-light text-white">Creator</p>
+            </>
+          ) : item.created_by[0].name ? (
+            <>
+              {' '}
+              <h4 className="pt-6 font-semibold text-md text-white">
+                {item.created_by[0].name}
+              </h4>
+              <p className="font-light text-white">Creator</p>
+            </>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </div>
