@@ -117,14 +117,4 @@ const OverviewHeader = ({ item }) => {
   );
 };
 
-// : item.created_by[0].name ? (
-//   <>
-//     {' '}
-//     <h4 className="pt-6 font-semibold text-md text-white">
-//       {item.created_by[0].name}
-//     </h4>
-//     <p className="font-light text-white">Creator</p>
-//   </>
-// )
-
 export default OverviewHeader;

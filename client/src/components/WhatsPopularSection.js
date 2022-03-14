@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { useDispatch, useSelector } from 'react-redux';
@@ -134,7 +134,8 @@ const WhatsPopularSection = () => {
 };
 
 function MovieCard({ onClick, item }) {
-  const visibility = React.useContext(VisibilityContext);
+  const visibility = useContext(VisibilityContext);
+  const location = useLocation();
 
   return (
     <div
@@ -144,7 +145,11 @@ function MovieCard({ onClick, item }) {
       tabIndex={0}
     >
       <Link
-        to={item.media_type === 'tv' ? `/tv/${item.id}` : `/movie/${item.id}`}
+        to={
+          location.pathname === '/popular/movies'
+            ? `/movie/${item.id}`
+            : `/tv/${item.id}`
+        }
         className="flex flex-col w-44 "
       >
         <div>
