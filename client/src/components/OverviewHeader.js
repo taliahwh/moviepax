@@ -8,6 +8,12 @@ import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 const OverviewHeader = ({ item }) => {
+  const time_convert = (num) => {
+    const hours = Math.floor(num / 60);
+    const minutes = num % 60;
+    return `${hours}h ${minutes}m`;
+  };
+
   return (
     <div
       className="h-[56rem] sm:h-[38rem] md:h-[36rem] mx-auto max-w-8xl bg-cover shadow-md hero-pattern"
@@ -32,23 +38,39 @@ const OverviewHeader = ({ item }) => {
           />
         </div>
         <div className="col-span-1 sm:col-span-2 md:col-span-8 flex flex-col pl-6 py-4 sm:py-14 ">
-          <h1 className="text-white text-4xl font-semibold pb-1">
-            {item.title || item.name}{' '}
-            <span className="font-normal text-gray-300">
-              ({moment(item.release_date).format('YYYY')})
-            </span>
-          </h1>
+          {item.title && (
+            <h1 className="text-white text-4xl font-semibold pb-1">
+              {item.title}{' '}
+              <span className="font-normal text-gray-300">
+                ({moment(item.release_date).format('YYYY')})
+              </span>
+            </h1>
+          )}
+          {item.name && (
+            <h1 className="text-white text-4xl font-semibold pb-1">
+              {item.name}{' '}
+              <span className="font-normal text-gray-300">
+                ({moment(item.release_date).format('YYYY')})
+              </span>
+            </h1>
+          )}
+
           <div className="flex space-x-3 text-white">
             <p className="font-light border-1 text-gray-300 border-gray-300 px-1">
               TV-MA
             </p>
             {/* TODO Map over genres and list them */}
-            {item.genres.map((genre) => (
-              <p>{genre.name}</p>
-            ))}
-            <p>•</p>
-            {/* TODO Convert minutes to hours and minutes*/}
-            <p>1hr</p>
+            {item.genres &&
+              item.genres.map((genre, index) => (
+                <p key={index}>{genre.name}</p>
+              ))}
+
+            {item.runtime && (
+              <>
+                <p>•</p>
+                <p>{time_convert(Number(item.runtime))}</p>
+              </>
+            )}
           </div>
 
           <div className="pt-8 flex space-x-1 sm:space-x-4 items-center">
@@ -105,9 +127,9 @@ const OverviewHeader = ({ item }) => {
           {item.created_by && (
             <>
               {' '}
-              <h4 className="pt-6 font-semibold text-md text-white">
-                {item.created_by[0].name}
-              </h4>
+              {/* <h4 className="pt-6 font-semibold text-md text-white">
+                {item.created_by[0].name || '-'}
+              </h4> */}
               <p className="font-light text-white">Creator</p>
             </>
           )}
