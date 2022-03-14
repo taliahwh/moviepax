@@ -14,7 +14,7 @@ const OverviewHeader = ({ item }) => {
     <div
       className="h-[56rem] sm:h-[38rem] md:h-[36rem] mx-auto max-w-8xl bg-cover shadow-md hero-pattern"
       style={{
-        backgroundImage: `linear-gradient(100deg, rgba(43, 37, 37, 0.92) 38%, rgba(43, 37, 37, 0.92)), url(${banner})`,
+        backgroundImage: `linear-gradient(100deg, rgba(43, 37, 37, 0.92) 38%, rgba(43, 37, 37, 0.92)), url(https://www.themoviedb.org/t/p/w600_and_h600_bestv2${item.backdrop_path})`,
       }}
     >
       {/* Content Area */}
