@@ -8,8 +8,8 @@ import movipax_logo from '../assets/movipax_logo.png';
 
 const Header = () => {
   return (
-    <nav className="bg-secondary px-4 py-4 sm:px-8 max-w-8xl mx-auto">
-      <div className="container flex sm:flex-row justify-between sm:justify-between sm:space-x-2 items-center mx-auto">
+    <nav className="bg-secondary px-4 py-4 ">
+      <div className="container flex sm:flex-row justify-between sm:justify-between sm:space-x-2 items-center sm:px-8 max-w-8xl mx-auto">
         <div className="flex flex-col mt-1 md:flex-row space-x-2 items-center">
           <Link to="/">
             {' '}
