@@ -17,6 +17,11 @@ import {
   actorCreditsReducer,
 } from './reducers/mediaReducers';
 
+import {
+  searchAllReducer,
+  searchMoviesReducer,
+} from './reducers/searchReducers';
+
 const reducer = combineReducers({
   trendingToday: trendingTodayReducer,
   trendingThisWeek: trendingThisWeekReducer,
@@ -30,6 +35,8 @@ const reducer = combineReducers({
   tvDetails: tvDetailsReducer,
   tvCast: tvCastReducer,
   tvKeywords: tvKeywordsReducer,
+  searchAll: searchAllReducer,
+  searchMovies: searchMoviesReducer,
 });
 
 // Initial loading when the redux store is loaded.

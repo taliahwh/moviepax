@@ -25,7 +25,8 @@ const App = () => {
         <Route path="/actor/:id" exact element={<ActorScreen />} />
         <Route path="/movie/cast/:id" exact element={<CastScreen />} />
         <Route path="/tv/cast/:id" exact element={<CastScreen />} />
-        <Route path="/search" exact element={<SearchScreen />} />
+        {/* <Route path="/search" exact element={<SearchScreen />} /> */}
+        <Route path="/search/query=:query" exact element={<SearchScreen />} />
       </Routes>
     </BrowserRouter>
   );

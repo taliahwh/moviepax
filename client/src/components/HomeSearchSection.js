@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import banner from '../assets/the_wire_banner.png';
 
+import { searchAll } from '../actions/searchActions';
+
 const HomeSearchSection = () => {
+  const [query, setQuery] = useState('');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(searchAll(query.replace(/\s/g, '+')));
+    // console.log(query.replace(/\s/g, '+'));
+    navigate(`/search/query=${query.replace(/\s/g, '+')}`);
+  };
+
   return (
     <div
       className="h-[22.5rem] mx-auto max-w-8xl bg-cover hero-pattern"
@@ -21,18 +37,24 @@ const HomeSearchSection = () => {
         </div>
 
         {/* Search bar */}
-        <div className="flex">
+        <form className="flex" action="submit" onSubmit={handleSubmit}>
           <div className="flex rounded-full">
             <input
               type="text"
+              id="query"
               className="px-4 py-2 text-gray-600 w-60 sm:w-96 md:w-[34rem] lg:w-[46rem] rounded-l-full"
               placeholder="Search for a movie, tv show, or person..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
             />
-            <button className="flex items-center justify-center px-4 text-white font-semibold bg-secondary hover:bg-[#3b3333] transition-colors duration-150 rounded-r-full">
+            <button
+              type="submit"
+              className="flex items-center justify-center px-4 text-white font-semibold bg-secondary hover:bg-[#3b3333] transition-colors duration-150 rounded-r-full"
+            >
               Search
             </button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
