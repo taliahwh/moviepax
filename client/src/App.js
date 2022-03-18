@@ -26,7 +26,22 @@ const App = () => {
         <Route path="/movie/cast/:id" exact element={<CastScreen />} />
         <Route path="/tv/cast/:id" exact element={<CastScreen />} />
         {/* <Route path="/search" exact element={<SearchScreen />} /> */}
-        <Route path="/search/query=:query" exact element={<SearchScreen />} />
+        <Route path="/search" exact element={<SearchScreen />} />
+        <Route
+          path="/search/movie/query=:query"
+          exact
+          element={<SearchScreen />}
+        />
+        <Route
+          path="/search/tv/query=:query"
+          exact
+          element={<SearchScreen />}
+        />
+        <Route
+          path="/search/person/query=:query"
+          exact
+          element={<SearchScreen />}
+        />
       </Routes>
     </BrowserRouter>
   );

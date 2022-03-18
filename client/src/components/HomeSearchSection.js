@@ -4,7 +4,12 @@ import { useDispatch } from 'react-redux';
 
 import banner from '../assets/the_wire_banner.png';
 
-import { searchAll } from '../actions/searchActions';
+import {
+  searchAll,
+  searchMovies,
+  searchTV,
+  searchPeople,
+} from '../actions/searchActions';
 
 const HomeSearchSection = () => {
   const [query, setQuery] = useState('');
@@ -15,8 +20,11 @@ const HomeSearchSection = () => {
     e.preventDefault();
 
     dispatch(searchAll(query.replace(/\s/g, '+')));
+    dispatch(searchMovies(query.replace(/\s/g, '+')));
+    dispatch(searchTV(query.replace(/\s/g, '+')));
+    dispatch(searchPeople(query.replace(/\s/g, '+')));
     // console.log(query.replace(/\s/g, '+'));
-    navigate(`/search/query=${query.replace(/\s/g, '+')}`);
+    navigate(`/search/movie/query=${query.replace(/\s/g, '+')}`);
   };
 
   return (

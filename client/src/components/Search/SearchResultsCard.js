@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-const SearchResults = ({ results }) => {
-  const movieCount = results.filter((result) => result.media_type === 'movie');
-  const tvCount = results.filter((result) => result.media_type === 'tv');
-  const peopleCount = results.filter(
-    (result) => result.known_for_department === 'Acting'
-  );
+const SearchResultsCard = ({ movieResults, tvResults, peopleResults }) => {
+  const { query } = useParams();
 
   return (
     <div className="rounded-md border-neutral-300 border-1 flex flex-col">
@@ -16,36 +13,34 @@ const SearchResults = ({ results }) => {
         </h1>
       </div>
       <Link
-        to="/"
+        to={`/search/movie/query=${query}`}
         className="font-semibold flex justify-between bg-neutral-200 py-3 pl-5 pr-6  hover:bg-neutral-200"
       >
         Movies
-        <p className=" rounded-lg px-2 font-normal bg-white">
-          {movieCount.length}
-        </p>
+        <p className=" rounded-lg px-2 font-normal bg-white">{movieResults}</p>
       </Link>
 
       <Link
-        to="/"
+        to={`/search/tv/query=${query}`}
         className="flex justify-between bg-white py-3 pl-5 pr-6  hover:bg-neutral-200"
       >
         TV Shows
         <p className="bg-neutral-200 rounded-lg px-2 font-normal ">
-          {tvCount.length}
+          {tvResults}
         </p>
       </Link>
 
       <Link
-        to="/"
+        to={`/search/person/query=${query}`}
         className="flex justify-between bg-white py-3 pl-5 pr-6  hover:bg-neutral-200"
       >
         People
         <p className="bg-neutral-200 rounded-lg px-2 font-normal ">
-          {peopleCount.length}
+          {peopleResults}
         </p>
       </Link>
     </div>
   );
 };
 
-export default SearchResults;
+export default SearchResultsCard;

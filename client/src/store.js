@@ -20,6 +20,8 @@ import {
 import {
   searchAllReducer,
   searchMoviesReducer,
+  searchPeopleReducer,
+  searchTVReducer,
 } from './reducers/searchReducers';
 
 const reducer = combineReducers({
@@ -37,6 +39,8 @@ const reducer = combineReducers({
   tvKeywords: tvKeywordsReducer,
   searchAll: searchAllReducer,
   searchMovies: searchMoviesReducer,
+  searchTV: searchTVReducer,
+  searchPeople: searchPeopleReducer,
 });
 
 // Initial loading when the redux store is loaded.
