@@ -81,18 +81,6 @@ const OverviewHeader = ({ item }) => {
               </p>
             </div>
 
-            <button>
-              <FontAwesomeIcon
-                icon={faHeart}
-                className="text-white fa-sm bg-secondary rounded-full p-4"
-              />
-            </button>
-            <button>
-              <FontAwesomeIcon
-                icon={faBookmark}
-                className="text-white fa-sm bg-secondary rounded-full p-4"
-              />
-            </button>
             <button className="flex items-center">
               <FontAwesomeIcon
                 icon={faPlay}
