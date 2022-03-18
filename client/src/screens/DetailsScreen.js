@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useLocation } from 'react-router-dom';
 
-import OverviewHeader from '../components/OverviewHeader';
+import OverviewHeader from '../components/MediaDetails/OverviewHeader';
 import SeriesCastSection from '../components/SeriesCastSection';
 import Footer from '../components/Footer';
 
