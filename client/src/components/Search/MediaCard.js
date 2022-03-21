@@ -1,13 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import moment from 'moment';
 
 import stock_photo from '../../assets/stock_photo.png';
 
 const MediaCard = ({ result }) => {
+  const location = useLocation();
   return (
     <Link
-      to="/"
+      to={
+        location.pathname.includes('/search/tv/')
+          ? `/tv/${result.id}`
+          : location.pathname.includes('/search/movie')
+          ? `/movie/${result.id}`
+          : '/'
+      }
       className="h-36 bg-white w-full flex items-center space-x-4 rounded-md border-1 border-neutral-300 shadow-sm"
     >
       {result.poster_path ? (

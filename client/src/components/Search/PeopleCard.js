@@ -6,7 +6,7 @@ import stock_photo from '../../assets/stock_photo.png';
 const PeopleCard = ({ person }) => {
   return (
     <Link
-      to="/"
+      to={`/actor/${person.id}`}
       className="h-36 bg-white w-full flex items-center space-x-4 rounded-md border-1 border-neutral-300 shadow-sm"
     >
       {person.profile_path ? (
