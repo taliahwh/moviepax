@@ -2,10 +2,10 @@ import React from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
+
+import stock_photo from '../../assets/stock_photo.png';
 
 const OverviewHeader = ({ item }) => {
   const time_convert = (num) => {
@@ -28,14 +28,23 @@ const OverviewHeader = ({ item }) => {
             <FontAwesomeIcon
               icon={faArrowLeft}
               className="text-neutral-300 pr-1 text-sm"
+              // className="h-[20rem] md:h-[30rem] rounded-lg m-auto"
             />
             Back to Home
           </Link>
-          <img
-            className="h-[20rem] md:h-[30rem] rounded-lg m-auto"
-            src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${item.poster_path}`}
-            alt="movie poster"
-          />
+          {item.poster_path ? (
+            <img
+              src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${item.poster_path}`}
+              alt="movie poster"
+              className="h-[20rem] md:h-[30rem] rounded-lg m-auto"
+            />
+          ) : (
+            <img
+              src={stock_photo}
+              alt="movie poster"
+              className="h-[20rem] md:h-[30rem] rounded-lg m-auto"
+            />
+          )}
         </div>
         <div className="col-span-1 sm:col-span-2 md:col-span-8 flex flex-col pl-6 py-4 sm:py-14 ">
           {item.title && (
@@ -59,7 +68,7 @@ const OverviewHeader = ({ item }) => {
             <p className="font-light border-1 text-gray-300 border-gray-300 px-1">
               TV-MA
             </p>
-            {/* TODO Map over genres and list them */}
+
             {item.genres &&
               item.genres.map((genre, index) => (
                 <p key={index}>{genre.name}</p>
