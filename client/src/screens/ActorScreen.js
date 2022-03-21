@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 
-import { LeftArrow, RightArrow } from '../components/Arrows';
+import { LeftArrow, RightArrow } from '../components/MediaDetails/Arrows';
 import Footer from '../components/Footer';
 import KnownForCard from '../components/KnownForCard';
 import ActingSection from '../components/ActingSection';

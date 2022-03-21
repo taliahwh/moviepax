@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 
-import { LeftArrow, RightArrow } from './Arrows';
+import { LeftArrow, RightArrow } from '../components/MediaDetails/Arrows';
 import MovieCard from './MovieCard';
 
 const getItems = () =>

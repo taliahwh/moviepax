@@ -6,7 +6,7 @@ import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
  * Local Components
  */
 import { LeftArrow, RightArrow } from './Arrows';
-import SeriesFactsSection from '../components/SeriesFactsSection';
+import SeriesFactsSection from './SeriesFactsSection';
 
 const getItems = () =>
   Array(20)
@@ -44,33 +44,41 @@ const SeriesCastSection = ({ item, cast, details, keywords }) => {
         <h3 className="text-2xl font-semibold text-secondary">
           Top Billed Cast
         </h3>
-        <Link
-          to={
-            location.pathname.includes('/movie')
-              ? `/movie/cast/${item.id}`
-              : `/tv/cast/${item.id}`
-          }
-          className="underline"
-        >
-          View full cast
-        </Link>
+        {cast.length > 10 && (
+          <Link
+            to={
+              location.pathname.includes('/movie')
+                ? `/movie/cast/${item.id}`
+                : `/tv/cast/${item.id}`
+            }
+            className="underline"
+          >
+            View full cast
+          </Link>
+        )}
       </div>
       {/* Content */}
       <div className="grid grid-cols-1  lg:grid-cols-11 gap-4">
-        <div className="col-span-1 lg:col-span-8">
-          <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-            {cast.slice(0, 9).map((actor) => (
-              <Card
-                itemId={actor.id}
-                title={actor.id}
-                key={actor.id}
-                onClick={handleClick(actor.id)}
-                selected={isItemSelected(actor.id)}
-                actor={actor}
-              />
-            ))}
-          </ScrollMenu>
-        </div>
+        {cast.length > 0 ? (
+          <div className="col-span-1 lg:col-span-8">
+            <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+              {cast.slice(0, 9).map((actor) => (
+                <MovieCard
+                  itemId={actor.id}
+                  title={actor.id}
+                  key={actor.id}
+                  onClick={handleClick(actor.id)}
+                  selected={isItemSelected(actor.id)}
+                  actor={actor}
+                />
+              ))}
+            </ScrollMenu>
+          </div>
+        ) : (
+          <div className="col-span-1 lg:col-span-8">
+            <p>We don't have any cast added to this TV Show.</p>
+          </div>
+        )}
         <div className="col-span-1 lg:col-span-3">
           <SeriesFactsSection details={details} keywords={keywords} />
         </div>
@@ -79,7 +87,7 @@ const SeriesCastSection = ({ item, cast, details, keywords }) => {
   );
 };
 
-function Card({ onClick, actor }) {
+function MovieCard({ onClick, actor }) {
   const visibility = React.useContext(VisibilityContext);
 
   return (

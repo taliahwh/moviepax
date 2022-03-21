@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 
-import { LeftArrow, RightArrow } from './Arrows';
+import { LeftArrow, RightArrow } from '../components/MediaDetails/Arrows';
 import TrailerCard from './TrailerCard';
 
 const getItems = () =>

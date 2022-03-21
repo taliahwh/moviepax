@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import stockPhoto from '../assets/stock_photo.png';
+
 const MovieCard = () => {
   return (
     <Link to="/:id" className="flex flex-col w-44 ">

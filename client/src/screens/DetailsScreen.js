@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useLocation } from 'react-router-dom';
 
 import OverviewHeader from '../components/MediaDetails/OverviewHeader';
-import SeriesCastSection from '../components/SeriesCastSection';
+import SeriesCastSection from '../components/MediaDetails/SeriesCastSection';
 import Footer from '../components/Footer';
 
 import {

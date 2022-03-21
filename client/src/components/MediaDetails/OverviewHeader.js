@@ -28,7 +28,6 @@ const OverviewHeader = ({ item }) => {
             <FontAwesomeIcon
               icon={faArrowLeft}
               className="text-neutral-300 pr-1 text-sm"
-              // className="h-[20rem] md:h-[30rem] rounded-lg m-auto"
             />
             Back to Home
           </Link>

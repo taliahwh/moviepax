@@ -10,7 +10,8 @@ import {
 } from '../constants/mediaContstants';
 import { getPopularTV, getPopularMovies } from '../actions/mediaActions';
 
-import { LeftArrow, RightArrow } from './Arrows';
+import { LeftArrow, RightArrow } from '../components/MediaDetails/Arrows';
+import stockPhoto from '../assets/stock_photo.png';
 
 const getItems = () =>
   Array(20)
@@ -155,7 +156,10 @@ function MovieCard({ onClick, item }) {
         <div>
           <img
             className="w-40 rounded-lg mx-1"
-            src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`}
+            src={
+              `https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}` ||
+              `${stockPhoto}`
+            }
             alt="movie cover"
           />
           <div className="rounded-full w-12 h-12 bg-secondary relative left-4 bottom-7 outline outline-offset-0 outline-green-500">
