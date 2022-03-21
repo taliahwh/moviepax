@@ -63,7 +63,7 @@ const SeriesCastSection = ({ item, cast, details, keywords }) => {
           <div className="col-span-1 lg:col-span-8">
             <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
               {cast.slice(0, 9).map((actor) => (
-                <MovieCard
+                <CastCard
                   itemId={actor.id}
                   title={actor.id}
                   key={actor.id}
@@ -87,7 +87,7 @@ const SeriesCastSection = ({ item, cast, details, keywords }) => {
   );
 };
 
-function MovieCard({ onClick, actor }) {
+function CastCard({ onClick, actor }) {
   const visibility = React.useContext(VisibilityContext);
 
   return (
