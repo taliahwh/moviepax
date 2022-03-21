@@ -26,8 +26,6 @@ export const searchAll = (query) => async (dispatch) => {
     );
 
     dispatch({ type: SEARCH_ALL_SUCCESS, payload: data });
-    console.log('Search ALL');
-    console.log(data);
   } catch (error) {
     dispatch({
       type: SEARCH_ALL_FAILURE,
