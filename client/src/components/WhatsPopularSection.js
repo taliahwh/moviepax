@@ -11,7 +11,7 @@ import {
 import { getPopularTV, getPopularMovies } from '../actions/mediaActions';
 
 import { LeftArrow, RightArrow } from '../components/MediaDetails/Arrows';
-import stockPhoto from '../assets/stock_photo.png';
+import stock_photo from '../assets/stock_photo.png';
 
 const getItems = () =>
   Array(20)
@@ -21,7 +21,6 @@ const getItems = () =>
 const WhatsPopularSection = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const [items, setItems] = useState(getItems);
   const [selected, setSelected] = useState([]);
 
   const isItemSelected = (id) => !!selected.find((el) => el === id);
@@ -40,17 +39,15 @@ const WhatsPopularSection = () => {
     error: errorPopularMovies,
   } = useSelector((state) => state.popularMovies);
 
-  const handleClick =
-    (id) =>
-    ({ getItemById, scrollToItem }) => {
-      const itemSelected = isItemSelected(id);
+  const handleClick = (id) => () => {
+    const itemSelected = isItemSelected(id);
 
-      setSelected((currentSelected) =>
-        itemSelected
-          ? currentSelected.filter((el) => el !== id)
-          : currentSelected.concat(id)
-      );
-    };
+    setSelected((currentSelected) =>
+      itemSelected
+        ? currentSelected.filter((el) => el !== id)
+        : currentSelected.concat(id)
+    );
+  };
 
   useEffect(() => {
     if (location.pathname === '/popular/ontv' || location.pathname === '/') {
@@ -154,14 +151,19 @@ function MovieCard({ onClick, item }) {
         className="flex flex-col w-44 "
       >
         <div>
-          <img
-            className="w-40 rounded-lg mx-1"
-            src={
-              `https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}` ||
-              `${stockPhoto}`
-            }
-            alt="movie cover"
-          />
+          {item.poster_path ? (
+            <img
+              src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${item.poster_path}`}
+              alt="movie poster"
+              className="w-40 rounded-lg mx-1"
+            />
+          ) : (
+            <img
+              src={stock_photo}
+              alt="movie poster"
+              className="w-40 rounded-lg mx-1"
+            />
+          )}
           <div className="rounded-full w-12 h-12 bg-secondary relative left-4 bottom-7 outline outline-offset-0 outline-green-500">
             <p className="text-white font-semibold relative left-2.5 top-3 ">
               {item.vote_average * 10}
