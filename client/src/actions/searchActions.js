@@ -48,8 +48,6 @@ export const searchMovies = (query) => async (dispatch) => {
     );
 
     dispatch({ type: SEARCH_MOVIES_SUCCESS, payload: data });
-    console.log('Search MOVIES');
-    console.log(data);
   } catch (error) {
     dispatch({
       type: SEARCH_MOVIES_FAILURE,
@@ -70,8 +68,6 @@ export const searchTV = (query) => async (dispatch) => {
     );
 
     dispatch({ type: SEARCH_TV_SUCCESS, payload: data });
-    console.log('Search TV');
-    console.log(data);
   } catch (error) {
     dispatch({
       type: SEARCH_TV_FAILURE,
@@ -92,8 +88,6 @@ export const searchPeople = (query) => async (dispatch) => {
     );
 
     dispatch({ type: SEARCH_PEOPLE_SUCCESS, payload: data });
-    console.log('Search People');
-    console.log(data);
   } catch (error) {
     dispatch({
       type: SEARCH_PEOPLE_FAILURE,
