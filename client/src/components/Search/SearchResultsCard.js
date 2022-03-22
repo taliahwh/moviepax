@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 const SearchResultsCard = ({ movieResults, tvResults, peopleResults }) => {
@@ -12,33 +12,51 @@ const SearchResultsCard = ({ movieResults, tvResults, peopleResults }) => {
           Search Results
         </h1>
       </div>
-      <Link
-        to={`/search/movie/query=${query}`}
-        className="font-semibold flex justify-between bg-neutral-200 py-3 pl-5 pr-6  hover:bg-neutral-200"
+
+      <NavLink
+        to={`/search/movie/query=${query}/page/1`}
+        // className={(state) => console.log(state)}
+        className={({ isActive }) =>
+          isActive
+            ? 'font-semibold flex justify-between bg-neutral-200 py-3 pl-5 pr-6  hover:bg-neutral-200'
+            : 'flex justify-between bg-white py-3 pl-5 pr-6  hover:bg-neutral-200'
+        }
       >
         Movies
-        <p className=" rounded-lg px-2 font-normal bg-white">{movieResults}</p>
-      </Link>
+        <p className="bg-neutral-200 rounded-lg px-2 font-normal ">
+          {movieResults}
+        </p>
+      </NavLink>
 
-      <Link
-        to={`/search/tv/query=${query}`}
-        className="flex justify-between bg-white py-3 pl-5 pr-6  hover:bg-neutral-200"
+      <NavLink
+        to={`/search/tv/query=${query}/page/1`}
+        // className={(state) => console.log(state)}
+        className={({ isActive }) =>
+          isActive
+            ? 'font-semibold flex justify-between bg-neutral-200 py-3 pl-5 pr-6  hover:bg-neutral-200'
+            : 'flex justify-between bg-white py-3 pl-5 pr-6  hover:bg-neutral-200'
+        }
       >
         TV Shows
         <p className="bg-neutral-200 rounded-lg px-2 font-normal ">
           {tvResults}
         </p>
-      </Link>
+      </NavLink>
 
-      <Link
-        to={`/search/person/query=${query}`}
-        className="flex justify-between bg-white py-3 pl-5 pr-6  hover:bg-neutral-200"
+      <NavLink
+        to={`/search/person/query=${query}/page/1`}
+        // className={(state) => console.log(state)}
+        className={({ isActive }) =>
+          isActive
+            ? 'font-semibold flex justify-between bg-neutral-200 py-3 pl-5 pr-6  hover:bg-neutral-200'
+            : 'flex justify-between bg-white py-3 pl-5 pr-6  hover:bg-neutral-200'
+        }
       >
         People
         <p className="bg-neutral-200 rounded-lg px-2 font-normal ">
           {peopleResults}
         </p>
-      </Link>
+      </NavLink>
     </div>
   );
 };
