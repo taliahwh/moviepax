@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SearchResultsCard from '../components/Search/SearchResultsCard';
 import MediaCard from '../components/Search/MediaCard';
 import PeopleCard from '../components/Search/PeopleCard';
+import Pagination from '../components/Search/Pagination';
 import Footer from '../components/Footer';
 
 import {
@@ -18,7 +19,9 @@ const SearchScreen = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-  const [query, setQuery] = useState('');
+  const { query } = useParams();
+  const { pageNumber } = useParams();
+  const [queryFromSearch, setQueryFromSearch] = useState('');
 
   const {
     loading: loadingSearchMovies,
@@ -53,13 +56,23 @@ const SearchScreen = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(searchAll(query.replace(/\s/g, '+')));
-    dispatch(searchMovies(query.replace(/\s/g, '+')));
-    dispatch(searchTV(query.replace(/\s/g, '+')));
-    dispatch(searchPeople(query.replace(/\s/g, '+')));
-    // console.log(query.replace(/\s/g, '+'));
-    navigate(`/search/movie/query=${query.replace(/\s/g, '+')}`);
+    // dispatch(searchAll(queryFromSearch.replace(/\s/g, '+')));
+    // dispatch(searchMovies(queryFromSearch.replace(/\s/g, '+')));
+    // dispatch(searchTV(queryFromSearch.replace(/\s/g, '+')));
+    // dispatch(searchPeople(queryFromSearch.replace(/\s/g, '+')));
+    // console.log(queryFromSearch.replace(/\s/g, '+'));
+    navigate(
+      `/search/movie/query=${queryFromSearch.replace(/\s/g, '+')}/page/${1}`
+    );
   };
+
+  useEffect(() => {
+    dispatch(searchAll(query.replace(/\s/g, '+')), pageNumber);
+    dispatch(searchMovies(query.replace(/\s/g, '+')), pageNumber);
+    dispatch(searchTV(query.replace(/\s/g, '+')), pageNumber);
+    dispatch(searchPeople(query.replace(/\s/g, '+')), pageNumber);
+    console.log(query, pageNumber);
+  }, [dispatch, query, pageNumber]);
 
   return (
     <div className="flex flex-col space-y-5 md:space-y-8 h-full mx-auto">
@@ -71,10 +84,11 @@ const SearchScreen = () => {
         <input
           className="w-full border-stone-600 italic focus:outline-none focus:border-stone-500 focus:ring-stone-500"
           type="text"
+          value={queryFromSearch}
           name="search-bar"
           id="search-bar"
           placeholder="Search for a movie, tv show, person..."
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => setQueryFromSearch(e.target.value)}
         />
         <button type="submit" className="hidden">
           Search
@@ -94,14 +108,22 @@ const SearchScreen = () => {
           </div>
         )}
         {/* Media Cards */}
-        <div className="col-span-1 md:col-span-7  h-full flex flex-col space-y-5">
-          {location.pathname.includes('/search/movie') &&
-            successSearchMovies &&
-            searchMoviesResults.map((result, index) => (
-              <div key={index}>
-                <MediaCard result={result} />
-              </div>
-            ))}
+        <div className="col-span-1 md:col-span-7 mb-5">
+          {location.pathname.includes('/search/movie') && successSearchMovies && (
+            <div className=" flex flex-col space-y-5">
+              {searchMoviesResults.map((result, index) => (
+                <div key={index}>
+                  <MediaCard result={result} />
+                </div>
+              ))}
+              <Pagination
+                totalPages={searchMoviesPages}
+                page={searchMoviesPage}
+                query={query}
+                mediaType="movie"
+              />
+            </div>
+          )}
 
           {location.pathname.includes('/search/tv') &&
             successSearchTV &&
