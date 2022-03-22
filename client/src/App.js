@@ -28,17 +28,17 @@ const App = () => {
         {/* <Route path="/search" exact element={<SearchScreen />} /> */}
         <Route path="/search" exact element={<SearchScreen />} />
         <Route
-          path="/search/movie/query=:query"
+          path="/search/movie/query=:query/page/:pageNumber"
           exact
           element={<SearchScreen />}
         />
         <Route
-          path="/search/tv/query=:query"
+          path="/search/tv/query=:query/page/:pageNumber"
           exact
           element={<SearchScreen />}
         />
         <Route
-          path="/search/person/query=:query"
+          path="/search/person/query=:query/page/:pageNumber"
           exact
           element={<SearchScreen />}
         />
