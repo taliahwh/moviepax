@@ -118,21 +118,37 @@ const SearchScreen = () => {
             </div>
           )}
 
-          {location.pathname.includes('/search/tv') &&
-            successSearchTV &&
-            searchTVResults.map((result, index) => (
-              <div key={index}>
-                <MediaCard result={result} />
-              </div>
-            ))}
+          {location.pathname.includes('/search/tv') && successSearchTV && (
+            <div className=" flex flex-col space-y-5">
+              {searchTVResults.map((result, index) => (
+                <div key={index}>
+                  <MediaCard result={result} />
+                </div>
+              ))}
+              <Pagination
+                totalPages={searchTVPages}
+                page={searchTVPage}
+                query={query}
+                mediaType="tv"
+              />
+            </div>
+          )}
 
-          {location.pathname.includes('/search/person') &&
-            successSearchPeople &&
-            searchPeopleResults.map((result, index) => (
-              <div key={index}>
-                <PeopleCard person={result} />
-              </div>
-            ))}
+          {location.pathname.includes('/search/person') && successSearchPeople && (
+            <div className=" flex flex-col space-y-5">
+              {searchPeopleResults.map((result, index) => (
+                <div key={index}>
+                  <PeopleCard person={result} />
+                </div>
+              ))}
+              <Pagination
+                totalPages={searchPeoplePages}
+                page={searchPeoplePage}
+                query={query}
+                mediaType="person"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

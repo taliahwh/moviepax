@@ -10,13 +10,10 @@ const Pagination = ({ totalPages, mediaType, page, query }) => {
             className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px mt-5"
             aria-label="Pagination"
           >
-            <Link
-              to="/"
-              className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-            >
+            <div className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-gray-100 text-sm font-medium text-gray-500 hover:bg-gray-50">
               <span className="sr-only">Previous</span>
               <i className="fas fa-chevron-left"></i>
-            </Link>
+            </div>
 
             {[...Array(totalPages).keys()].map((x) => (
               <Link
@@ -32,13 +29,10 @@ const Pagination = ({ totalPages, mediaType, page, query }) => {
               </Link>
             ))}
 
-            <Link
-              to="/"
-              className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-            >
+            <div className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-gray-100 text-sm font-medium text-gray-500 hover:bg-gray-50">
               <span className="sr-only">Next</span>
               <i className="fas fa-chevron-right"></i>
-            </Link>
+            </div>
           </nav>
         </div>
       </div>

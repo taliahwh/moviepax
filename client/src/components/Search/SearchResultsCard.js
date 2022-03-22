@@ -18,8 +18,8 @@ const SearchResultsCard = ({ movieResults, tvResults, peopleResults }) => {
         // className={(state) => console.log(state)}
         className={({ isActive }) =>
           isActive
-            ? 'font-semibold flex justify-between bg-neutral-200 py-3 pl-5 pr-6  hover:bg-neutral-200'
-            : 'flex justify-between bg-white py-3 pl-5 pr-6  hover:bg-neutral-200'
+            ? 'font-semibold flex justify-between bg-neutral-200 py-3 pl-5 pr-6  hover:bg-neutral-200 border-b-1'
+            : 'flex justify-between bg-white py-3 pl-5 pr-6  hover:bg-neutral-200 border-b-1'
         }
       >
         Movies
@@ -33,8 +33,8 @@ const SearchResultsCard = ({ movieResults, tvResults, peopleResults }) => {
         // className={(state) => console.log(state)}
         className={({ isActive }) =>
           isActive
-            ? 'font-semibold flex justify-between bg-neutral-200 py-3 pl-5 pr-6  hover:bg-neutral-200'
-            : 'flex justify-between bg-white py-3 pl-5 pr-6  hover:bg-neutral-200'
+            ? 'font-semibold flex justify-between bg-neutral-200 py-3 pl-5 pr-6  hover:bg-neutral-200 border-b-1'
+            : 'flex justify-between bg-white py-3 pl-5 pr-6  hover:bg-neutral-200 border-b-1'
         }
       >
         TV Shows

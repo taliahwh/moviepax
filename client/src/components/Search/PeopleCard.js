@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import stock_photo from '../../assets/stock_photo.png';
+import stock_person from '../../assets/stock_person.png';
 
 const PeopleCard = ({ person }) => {
   return (
@@ -17,7 +17,7 @@ const PeopleCard = ({ person }) => {
         />
       ) : (
         <img
-          src={stock_photo}
+          src={stock_person}
           alt="profile poster"
           className="w-28 h-full bg-neutral-200 rounded-l-md"
         />
