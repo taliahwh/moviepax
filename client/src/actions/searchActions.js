@@ -17,12 +17,12 @@ import {
 
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 
-export const searchAll = (query) => async (dispatch) => {
+export const searchAll = (query, pageNumber) => async (dispatch) => {
   try {
     dispatch({ type: SEARCH_ALL_REQUEST });
 
     const { data } = await axios.get(
-      `${TMDB_BASE_URL}/search/multi?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}`
+      `${TMDB_BASE_URL}/search/multi?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}&page=${pageNumber}`
     );
 
     dispatch({ type: SEARCH_ALL_SUCCESS, payload: data });
@@ -37,15 +37,16 @@ export const searchAll = (query) => async (dispatch) => {
   }
 };
 
-export const searchMovies = (query) => async (dispatch) => {
+export const searchMovies = (query, pageNumber) => async (dispatch) => {
   try {
     dispatch({ type: SEARCH_MOVIES_REQUEST });
 
     const { data } = await axios.get(
-      `${TMDB_BASE_URL}/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}`
+      `${TMDB_BASE_URL}/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}&page=${pageNumber}`
     );
 
     dispatch({ type: SEARCH_MOVIES_SUCCESS, payload: data });
+    console.log(data);
   } catch (error) {
     dispatch({
       type: SEARCH_MOVIES_FAILURE,
@@ -57,12 +58,12 @@ export const searchMovies = (query) => async (dispatch) => {
   }
 };
 
-export const searchTV = (query) => async (dispatch) => {
+export const searchTV = (query, pageNumber) => async (dispatch) => {
   try {
     dispatch({ type: SEARCH_TV_REQUEST });
 
     const { data } = await axios.get(
-      `${TMDB_BASE_URL}/search/tv?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}`
+      `${TMDB_BASE_URL}/search/tv?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}&page=${pageNumber}`
     );
 
     dispatch({ type: SEARCH_TV_SUCCESS, payload: data });
@@ -77,12 +78,12 @@ export const searchTV = (query) => async (dispatch) => {
   }
 };
 
-export const searchPeople = (query) => async (dispatch) => {
+export const searchPeople = (query, pageNumber) => async (dispatch) => {
   try {
     dispatch({ type: SEARCH_PEOPLE_REQUEST });
 
     const { data } = await axios.get(
-      `${TMDB_BASE_URL}/search/person?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}`
+      `${TMDB_BASE_URL}/search/person?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}&page=${pageNumber}`
     );
 
     dispatch({ type: SEARCH_PEOPLE_SUCCESS, payload: data });
