@@ -6,7 +6,6 @@ import SearchResultsCard from '../components/Search/SearchResultsCard';
 import MediaCard from '../components/Search/MediaCard';
 import PeopleCard from '../components/Search/PeopleCard';
 import Pagination from '../components/Search/Pagination';
-import Footer from '../components/Footer';
 
 import {
   searchAll,
@@ -56,22 +55,16 @@ const SearchScreen = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // dispatch(searchAll(queryFromSearch.replace(/\s/g, '+')));
-    // dispatch(searchMovies(queryFromSearch.replace(/\s/g, '+')));
-    // dispatch(searchTV(queryFromSearch.replace(/\s/g, '+')));
-    // dispatch(searchPeople(queryFromSearch.replace(/\s/g, '+')));
-    // console.log(queryFromSearch.replace(/\s/g, '+'));
     navigate(
-      `/search/movie/query=${queryFromSearch.replace(/\s/g, '+')}/page/${1}`
+      `/search/movie/query=${queryFromSearch.replace(/\s/g, '+')}/page/1`
     );
   };
 
   useEffect(() => {
-    dispatch(searchAll(query.replace(/\s/g, '+')), pageNumber);
-    dispatch(searchMovies(query.replace(/\s/g, '+')), pageNumber);
-    dispatch(searchTV(query.replace(/\s/g, '+')), pageNumber);
-    dispatch(searchPeople(query.replace(/\s/g, '+')), pageNumber);
-    console.log(query, pageNumber);
+    dispatch(searchAll(query.replace(/\s/g, '+'), pageNumber));
+    dispatch(searchMovies(query.replace(/\s/g, '+'), pageNumber));
+    dispatch(searchTV(query.replace(/\s/g, '+'), pageNumber));
+    dispatch(searchPeople(query.replace(/\s/g, '+'), pageNumber));
   }, [dispatch, query, pageNumber]);
 
   return (

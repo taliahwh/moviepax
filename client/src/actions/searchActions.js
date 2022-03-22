@@ -46,7 +46,6 @@ export const searchMovies = (query, pageNumber) => async (dispatch) => {
     );
 
     dispatch({ type: SEARCH_MOVIES_SUCCESS, payload: data });
-    console.log(data);
   } catch (error) {
     dispatch({
       type: SEARCH_MOVIES_FAILURE,
