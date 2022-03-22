@@ -15,16 +15,19 @@ const HomeSearchSection = () => {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const pageNumber = 1;
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(searchAll(query.replace(/\s/g, '+')));
-    dispatch(searchMovies(query.replace(/\s/g, '+')));
-    dispatch(searchTV(query.replace(/\s/g, '+')));
-    dispatch(searchPeople(query.replace(/\s/g, '+')));
-    // console.log(query.replace(/\s/g, '+'));
-    navigate(`/search/movie/query=${query.replace(/\s/g, '+')}`);
+    // dispatch(searchAll(query.replace(/\s/g, '+'), pageNumber));
+    // dispatch(searchMovies(query.replace(/\s/g, '+'), pageNumber));
+    // dispatch(searchTV(query.replace(/\s/g, '+'), pageNumber));
+    // dispatch(searchPeople(query.replace(/\s/g, '+'), pageNumber));
+    // // console.log(query.replace(/\s/g, '+'), pageNumber);
+    navigate(
+      `/search/movie/query=${query.replace(/\s/g, '+')}/page/${pageNumber}`
+    );
   };
 
   return (
