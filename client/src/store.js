@@ -24,6 +24,11 @@ import {
   searchTVReducer,
 } from './reducers/searchReducers';
 
+import {
+  tvOnAirReducer,
+  tvTrailerOneReducer,
+} from './reducers/trailerReducers';
+
 const reducer = combineReducers({
   trendingToday: trendingTodayReducer,
   trendingThisWeek: trendingThisWeekReducer,
@@ -41,6 +46,8 @@ const reducer = combineReducers({
   searchMovies: searchMoviesReducer,
   searchTV: searchTVReducer,
   searchPeople: searchPeopleReducer,
+  tvOnAir: tvOnAirReducer,
+  tvTrailerOne: tvTrailerOneReducer,
 });
 
 // Initial loading when the redux store is loaded.
