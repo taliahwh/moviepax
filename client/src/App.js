@@ -7,6 +7,7 @@ import DetailsScreen from './screens/DetailsScreen';
 import ActorScreen from './screens/ActorScreen';
 import CastScreen from './screens/CastScreen';
 import SearchScreen from './screens/SearchScreen';
+import TestScreen from './screens/TestScreen';
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/tv/cast/:id" exact element={<CastScreen />} />
         {/* <Route path="/search" exact element={<SearchScreen />} /> */}
         <Route path="/search" exact element={<SearchScreen />} />
+        <Route path="/test" exact element={<TestScreen />} />
         <Route
           path="/search/movie/query=:query/page/:pageNumber"
           exact
