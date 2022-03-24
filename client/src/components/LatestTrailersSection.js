@@ -23,63 +23,63 @@ const LatestTrailersSection = () => {
   const {
     loading: loadingTrailerOne,
     success: successTrailerOne,
-    trailerOne,
+    tvTrailerOne,
     error: errorTrailerOne,
   } = useSelector((state) => state.tvTrailerOne);
 
   const {
     loading: loadingTrailerTwo,
     success: successTrailerTwo,
-    trailerTwo,
+    tvTrailerTwo,
     error: errorTrailerTwo,
   } = useSelector((state) => state.tvTrailerTwo);
 
   const {
     loading: loadingTrailerThree,
     success: successTrailerThree,
-    trailerThree,
+    tvTrailerThree,
     error: errorTrailerThree,
   } = useSelector((state) => state.tvTrailerThree);
 
   const {
     loading: loadingTrailerFour,
     success: successTrailerFour,
-    trailerFour,
+    tvTrailerFour,
     error: errorTrailerFour,
   } = useSelector((state) => state.tvTrailerFour);
 
   const {
     loading: loadingTrailerFive,
     success: successTrailerFive,
-    trailerFive,
+    tvTrailerFive,
     error: errorTrailerFive,
   } = useSelector((state) => state.tvTrailerFive);
 
   const {
     loading: loadingTrailerSix,
     success: successTrailerSix,
-    trailerSix,
+    tvTrailerSix,
     error: errorTrailerSix,
   } = useSelector((state) => state.tvTrailerSix);
 
   const {
     loading: loadingTrailerSeven,
     success: successTrailerSeven,
-    trailerSeven,
+    tvTrailerSeven,
     error: errorTrailerSeven,
   } = useSelector((state) => state.tvTrailerSeven);
 
   const {
     loading: loadingTrailerEight,
     success: successTrailerEight,
-    trailerEight,
+    tvTrailerEight,
     error: errorTrailerEight,
   } = useSelector((state) => state.tvTrailerEight);
 
   const {
     loading: loadingTrailerNine,
     success: successTrailerNine,
-    trailerNine,
+    tvTrailerNine,
     error: errorTrailerNine,
   } = useSelector((state) => state.tvTrailerNine);
 
@@ -141,379 +141,469 @@ const LatestTrailersSection = () => {
       </div>
       {/* Content */}
       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-        {successTrailerOne && trailerOne.results.length !== 0 && (
+        {successTrailerOne && tvTrailerOne.results.length !== 0 && (
           <Card
             itemId={
-              trailerOne.results.findIndex((el) => el.official === true) !== -1
-                ? trailerOne.results[
-                    trailerOne.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerOne.results[0].id
-            } // NOTE: itemId is required for track items
-            key={
-              trailerOne.results.findIndex((el) => el.official === true) !== -1
-                ? trailerOne.results[
-                    trailerOne.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerOne.results[0].id
-            }
-            onClick={handleClick(
-              trailerOne.results.findIndex((el) => el.official === true) !== -1
-                ? trailerOne.results[
-                    trailerOne.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerOne.results[0].id
-            )}
-            selected={isItemSelected(
-              trailerOne.results.findIndex((el) => el.official === true) !== -1
-                ? trailerOne.results[
-                    trailerOne.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerOne.results[0].id
-            )}
-            trailer={
-              trailerOne.results.findIndex((el) => el.official === true) !== -1
-                ? trailerOne.results[
-                    trailerOne.results.findIndex((el) => el.official === true)
-                  ]
-                : trailerOne.results[0]
-            }
-            title={trailerOne.title}
-          />
-        )}
-        {successTrailerTwo && trailerTwo.results.length !== 0 && (
-          <Card
-            itemId={
-              trailerTwo.results.findIndex((el) => el.official === true) !== -1
-                ? trailerTwo.results[
-                    trailerTwo.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerTwo.results[0].id
-            } // NOTE: itemId is required for track items
-            key={
-              trailerTwo.results.findIndex((el) => el.official === true) !== -1
-                ? trailerTwo.results[
-                    trailerTwo.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerTwo.results[0].id
-            }
-            onClick={handleClick(
-              trailerTwo.results.findIndex((el) => el.official === true) !== -1
-                ? trailerTwo.results[
-                    trailerTwo.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerTwo.results[0].id
-            )}
-            selected={isItemSelected(
-              trailerTwo.results.findIndex((el) => el.official === true) !== -1
-                ? trailerTwo.results[
-                    trailerTwo.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerTwo.results[0].id
-            )}
-            trailer={
-              trailerTwo.results.findIndex((el) => el.official === true) !== -1
-                ? trailerTwo.results[
-                    trailerTwo.results.findIndex((el) => el.official === true)
-                  ]
-                : trailerTwo.results[0]
-            }
-            title={trailerTwo.title}
-          />
-        )}
-        {successTrailerThree && trailerThree.results.length !== 0 && (
-          <Card
-            itemId={
-              trailerThree.results.findIndex((el) => el.official === true) !==
+              tvTrailerOne.results.findIndex((el) => el.official === true) !==
               -1
-                ? trailerThree.results[
-                    trailerThree.results.findIndex((el) => el.official === true)
+                ? tvTrailerOne.results[
+                    tvTrailerOne.results.findIndex((el) => el.official === true)
                   ].id
-                : trailerThree.results[0].id
+                : tvTrailerOne.results[0].id
             } // NOTE: itemId is required for track items
             key={
-              trailerThree.results.findIndex((el) => el.official === true) !==
+              tvTrailerOne.results.findIndex((el) => el.official === true) !==
               -1
-                ? trailerThree.results[
-                    trailerThree.results.findIndex((el) => el.official === true)
+                ? tvTrailerOne.results[
+                    tvTrailerOne.results.findIndex((el) => el.official === true)
                   ].id
-                : trailerThree.results[0].id
+                : tvTrailerOne.results[0].id
             }
             onClick={handleClick(
-              trailerThree.results.findIndex((el) => el.official === true) !==
+              tvTrailerOne.results.findIndex((el) => el.official === true) !==
                 -1
-                ? trailerThree.results[
-                    trailerThree.results.findIndex((el) => el.official === true)
+                ? tvTrailerOne.results[
+                    tvTrailerOne.results.findIndex((el) => el.official === true)
                   ].id
-                : trailerThree.results[0].id
+                : tvTrailerOne.results[0].id
             )}
             selected={isItemSelected(
-              trailerThree.results.findIndex((el) => el.official === true) !==
+              tvTrailerOne.results.findIndex((el) => el.official === true) !==
                 -1
-                ? trailerThree.results[
-                    trailerThree.results.findIndex((el) => el.official === true)
+                ? tvTrailerOne.results[
+                    tvTrailerOne.results.findIndex((el) => el.official === true)
                   ].id
-                : trailerThree.results[0].id
+                : tvTrailerOne.results[0].id
             )}
             trailer={
-              trailerThree.results.findIndex((el) => el.official === true) !==
+              tvTrailerOne.results.findIndex((el) => el.official === true) !==
               -1
-                ? trailerThree.results[
-                    trailerThree.results.findIndex((el) => el.official === true)
+                ? tvTrailerOne.results[
+                    tvTrailerOne.results.findIndex((el) => el.official === true)
                   ]
-                : trailerThree.results[0]
+                : tvTrailerOne.results[0]
             }
-            title={trailerThree.title}
+            title={tvTrailerOne.title}
           />
         )}
-        {successTrailerFour && trailerFour.results.length !== 0 && (
+        {successTrailerTwo && tvTrailerTwo.results.length !== 0 && (
           <Card
             itemId={
-              trailerFour.results.findIndex((el) => el.official === true) !== -1
-                ? trailerFour.results[
-                    trailerFour.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerFour.results[0].id
-            } // NOTE: itemId is required for track items
-            key={
-              trailerFour.results.findIndex((el) => el.official === true) !== -1
-                ? trailerFour.results[
-                    trailerFour.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerFour.results[0].id
-            }
-            onClick={handleClick(
-              trailerFour.results.findIndex((el) => el.official === true) !== -1
-                ? trailerFour.results[
-                    trailerFour.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerFour.results[0].id
-            )}
-            selected={isItemSelected(
-              trailerFour.results.findIndex((el) => el.official === true) !== -1
-                ? trailerFour.results[
-                    trailerFour.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerFour.results[0].id
-            )}
-            trailer={
-              trailerFour.results.findIndex((el) => el.official === true) !== -1
-                ? trailerFour.results[
-                    trailerFour.results.findIndex((el) => el.official === true)
-                  ]
-                : trailerFour.results[0]
-            }
-            title={trailerFour.title}
-          />
-        )}
-        {successTrailerFive && trailerFive.results.length !== 0 && (
-          <Card
-            itemId={
-              trailerFive.results.findIndex((el) => el.official === true) !== -1
-                ? trailerFive.results[
-                    trailerFive.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerFive.results[0].id
-            } // NOTE: itemId is required for track items
-            key={
-              trailerFive.results.findIndex((el) => el.official === true) !== -1
-                ? trailerFive.results[
-                    trailerFive.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerFive.results[0].id
-            }
-            onClick={handleClick(
-              trailerFive.results.findIndex((el) => el.official === true) !== -1
-                ? trailerFive.results[
-                    trailerFive.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerFive.results[0].id
-            )}
-            selected={isItemSelected(
-              trailerFive.results.findIndex((el) => el.official === true) !== -1
-                ? trailerFive.results[
-                    trailerFive.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerFive.results[0].id
-            )}
-            trailer={
-              trailerFive.results.findIndex((el) => el.official === true) !== -1
-                ? trailerFive.results[
-                    trailerFive.results.findIndex((el) => el.official === true)
-                  ]
-                : trailerFive.results[0]
-            }
-            title={trailerFive.title}
-          />
-        )}
-        {successTrailerSix && trailerSix.results.length !== 0 && (
-          <Card
-            itemId={
-              trailerSix.results.findIndex((el) => el.official === true) !== -1
-                ? trailerSix.results[
-                    trailerSix.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerSix.results[0].id
-            } // NOTE: itemId is required for track items
-            key={
-              trailerSix.results.findIndex((el) => el.official === true) !== -1
-                ? trailerSix.results[
-                    trailerSix.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerSix.results[0].id
-            }
-            onClick={handleClick(
-              trailerSix.results.findIndex((el) => el.official === true) !== -1
-                ? trailerSix.results[
-                    trailerSix.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerSix.results[0].id
-            )}
-            selected={isItemSelected(
-              trailerSix.results.findIndex((el) => el.official === true) !== -1
-                ? trailerSix.results[
-                    trailerSix.results.findIndex((el) => el.official === true)
-                  ].id
-                : trailerSix.results[0].id
-            )}
-            trailer={
-              trailerSix.results.findIndex((el) => el.official === true) !== -1
-                ? trailerSix.results[
-                    trailerSix.results.findIndex((el) => el.official === true)
-                  ]
-                : trailerSix.results[0]
-            }
-            title={trailerSix.title}
-          />
-        )}
-        {successTrailerSeven && trailerSeven.results.length !== 0 && (
-          <Card
-            itemId={
-              trailerSeven.results.findIndex((el) => el.official === true) !==
+              tvTrailerTwo.results.findIndex((el) => el.official === true) !==
               -1
-                ? trailerSeven.results[
-                    trailerSeven.results.findIndex((el) => el.official === true)
+                ? tvTrailerTwo.results[
+                    tvTrailerTwo.results.findIndex((el) => el.official === true)
                   ].id
-                : trailerSeven.results[0].id
+                : tvTrailerTwo.results[0].id
             } // NOTE: itemId is required for track items
             key={
-              trailerSeven.results.findIndex((el) => el.official === true) !==
+              tvTrailerTwo.results.findIndex((el) => el.official === true) !==
               -1
-                ? trailerSeven.results[
-                    trailerSeven.results.findIndex((el) => el.official === true)
+                ? tvTrailerTwo.results[
+                    tvTrailerTwo.results.findIndex((el) => el.official === true)
                   ].id
-                : trailerSeven.results[0].id
+                : tvTrailerTwo.results[0].id
             }
             onClick={handleClick(
-              trailerSeven.results.findIndex((el) => el.official === true) !==
+              tvTrailerTwo.results.findIndex((el) => el.official === true) !==
                 -1
-                ? trailerSeven.results[
-                    trailerSeven.results.findIndex((el) => el.official === true)
+                ? tvTrailerTwo.results[
+                    tvTrailerTwo.results.findIndex((el) => el.official === true)
                   ].id
-                : trailerSeven.results[0].id
+                : tvTrailerTwo.results[0].id
             )}
             selected={isItemSelected(
-              trailerSeven.results.findIndex((el) => el.official === true) !==
+              tvTrailerTwo.results.findIndex((el) => el.official === true) !==
                 -1
-                ? trailerSeven.results[
-                    trailerSeven.results.findIndex((el) => el.official === true)
+                ? tvTrailerTwo.results[
+                    tvTrailerTwo.results.findIndex((el) => el.official === true)
                   ].id
-                : trailerSeven.results[0].id
+                : tvTrailerTwo.results[0].id
             )}
             trailer={
-              trailerSeven.results.findIndex((el) => el.official === true) !==
+              tvTrailerTwo.results.findIndex((el) => el.official === true) !==
               -1
-                ? trailerSeven.results[
-                    trailerSeven.results.findIndex((el) => el.official === true)
+                ? tvTrailerTwo.results[
+                    tvTrailerTwo.results.findIndex((el) => el.official === true)
                   ]
-                : trailerSeven.results[0]
+                : tvTrailerTwo.results[0]
             }
-            title={trailerSeven.title}
+            title={tvTrailerTwo.title}
           />
         )}
-        {successTrailerEight && trailerEight.results.length !== 0 && (
+        {successTrailerThree && tvTrailerThree.results.length !== 0 && (
           <Card
             itemId={
-              trailerEight.results.findIndex((el) => el.official === true) !==
+              tvTrailerThree.results.findIndex((el) => el.official === true) !==
               -1
-                ? trailerEight.results[
-                    trailerEight.results.findIndex((el) => el.official === true)
+                ? tvTrailerThree.results[
+                    tvTrailerThree.results.findIndex(
+                      (el) => el.official === true
+                    )
                   ].id
-                : trailerEight.results[0].id
+                : tvTrailerThree.results[0].id
             } // NOTE: itemId is required for track items
             key={
-              trailerEight.results.findIndex((el) => el.official === true) !==
+              tvTrailerThree.results.findIndex((el) => el.official === true) !==
               -1
-                ? trailerEight.results[
-                    trailerEight.results.findIndex((el) => el.official === true)
+                ? tvTrailerThree.results[
+                    tvTrailerThree.results.findIndex(
+                      (el) => el.official === true
+                    )
                   ].id
-                : trailerEight.results[0].id
+                : tvTrailerThree.results[0].id
             }
             onClick={handleClick(
-              trailerEight.results.findIndex((el) => el.official === true) !==
+              tvTrailerThree.results.findIndex((el) => el.official === true) !==
                 -1
-                ? trailerEight.results[
-                    trailerEight.results.findIndex((el) => el.official === true)
+                ? tvTrailerThree.results[
+                    tvTrailerThree.results.findIndex(
+                      (el) => el.official === true
+                    )
                   ].id
-                : trailerEight.results[0].id
+                : tvTrailerThree.results[0].id
             )}
             selected={isItemSelected(
-              trailerEight.results.findIndex((el) => el.official === true) !==
+              tvTrailerThree.results.findIndex((el) => el.official === true) !==
                 -1
-                ? trailerEight.results[
-                    trailerEight.results.findIndex((el) => el.official === true)
+                ? tvTrailerThree.results[
+                    tvTrailerThree.results.findIndex(
+                      (el) => el.official === true
+                    )
                   ].id
-                : trailerEight.results[0].id
+                : tvTrailerThree.results[0].id
             )}
             trailer={
-              trailerEight.results.findIndex((el) => el.official === true) !==
+              tvTrailerThree.results.findIndex((el) => el.official === true) !==
               -1
-                ? trailerEight.results[
-                    trailerEight.results.findIndex((el) => el.official === true)
+                ? tvTrailerThree.results[
+                    tvTrailerThree.results.findIndex(
+                      (el) => el.official === true
+                    )
                   ]
-                : trailerEight.results[0]
+                : tvTrailerThree.results[0]
             }
-            title={trailerEight.title}
+            title={tvTrailerThree.title}
           />
         )}
-        {successTrailerNine && trailerNine.results.length !== 0 && (
+        {successTrailerFour && tvTrailerFour.results.length !== 0 && (
           <Card
             itemId={
-              trailerNine.results.findIndex((el) => el.official === true) !== -1
-                ? trailerNine.results[
-                    trailerNine.results.findIndex((el) => el.official === true)
+              tvTrailerFour.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerFour.results[
+                    tvTrailerFour.results.findIndex(
+                      (el) => el.official === true
+                    )
                   ].id
-                : trailerNine.results[0].id
+                : tvTrailerFour.results[0].id
             } // NOTE: itemId is required for track items
             key={
-              trailerNine.results.findIndex((el) => el.official === true) !== -1
-                ? trailerNine.results[
-                    trailerNine.results.findIndex((el) => el.official === true)
+              tvTrailerFour.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerFour.results[
+                    tvTrailerFour.results.findIndex(
+                      (el) => el.official === true
+                    )
                   ].id
-                : trailerNine.results[0].id
+                : tvTrailerFour.results[0].id
             }
             onClick={handleClick(
-              trailerNine.results.findIndex((el) => el.official === true) !== -1
-                ? trailerNine.results[
-                    trailerNine.results.findIndex((el) => el.official === true)
+              tvTrailerFour.results.findIndex((el) => el.official === true) !==
+                -1
+                ? tvTrailerFour.results[
+                    tvTrailerFour.results.findIndex(
+                      (el) => el.official === true
+                    )
                   ].id
-                : trailerNine.results[0].id
+                : tvTrailerFour.results[0].id
             )}
             selected={isItemSelected(
-              trailerNine.results.findIndex((el) => el.official === true) !== -1
-                ? trailerNine.results[
-                    trailerNine.results.findIndex((el) => el.official === true)
+              tvTrailerFour.results.findIndex((el) => el.official === true) !==
+                -1
+                ? tvTrailerFour.results[
+                    tvTrailerFour.results.findIndex(
+                      (el) => el.official === true
+                    )
                   ].id
-                : trailerNine.results[0].id
+                : tvTrailerFour.results[0].id
             )}
             trailer={
-              trailerNine.results.findIndex((el) => el.official === true) !== -1
-                ? trailerNine.results[
-                    trailerNine.results.findIndex((el) => el.official === true)
+              tvTrailerFour.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerFour.results[
+                    tvTrailerFour.results.findIndex(
+                      (el) => el.official === true
+                    )
                   ]
-                : trailerNine.results[0]
+                : tvTrailerFour.results[0]
             }
-            title={trailerNine.title}
+            title={tvTrailerFour.title}
+          />
+        )}
+        {successTrailerFive && tvTrailerFive.results.length !== 0 && (
+          <Card
+            itemId={
+              tvTrailerFive.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerFive.results[
+                    tvTrailerFive.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerFive.results[0].id
+            } // NOTE: itemId is required for track items
+            key={
+              tvTrailerFive.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerFive.results[
+                    tvTrailerFive.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerFive.results[0].id
+            }
+            onClick={handleClick(
+              tvTrailerFive.results.findIndex((el) => el.official === true) !==
+                -1
+                ? tvTrailerFive.results[
+                    tvTrailerFive.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerFive.results[0].id
+            )}
+            selected={isItemSelected(
+              tvTrailerFive.results.findIndex((el) => el.official === true) !==
+                -1
+                ? tvTrailerFive.results[
+                    tvTrailerFive.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerFive.results[0].id
+            )}
+            trailer={
+              tvTrailerFive.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerFive.results[
+                    tvTrailerFive.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ]
+                : tvTrailerFive.results[0]
+            }
+            title={tvTrailerFive.title}
+          />
+        )}
+        {successTrailerSix && tvTrailerSix.results.length !== 0 && (
+          <Card
+            itemId={
+              tvTrailerSix.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerSix.results[
+                    tvTrailerSix.results.findIndex((el) => el.official === true)
+                  ].id
+                : tvTrailerSix.results[0].id
+            } // NOTE: itemId is required for track items
+            key={
+              tvTrailerSix.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerSix.results[
+                    tvTrailerSix.results.findIndex((el) => el.official === true)
+                  ].id
+                : tvTrailerSix.results[0].id
+            }
+            onClick={handleClick(
+              tvTrailerSix.results.findIndex((el) => el.official === true) !==
+                -1
+                ? tvTrailerSix.results[
+                    tvTrailerSix.results.findIndex((el) => el.official === true)
+                  ].id
+                : tvTrailerSix.results[0].id
+            )}
+            selected={isItemSelected(
+              tvTrailerSix.results.findIndex((el) => el.official === true) !==
+                -1
+                ? tvTrailerSix.results[
+                    tvTrailerSix.results.findIndex((el) => el.official === true)
+                  ].id
+                : tvTrailerSix.results[0].id
+            )}
+            trailer={
+              tvTrailerSix.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerSix.results[
+                    tvTrailerSix.results.findIndex((el) => el.official === true)
+                  ]
+                : tvTrailerSix.results[0]
+            }
+            title={tvTrailerSix.title}
+          />
+        )}
+        {successTrailerSeven && tvTrailerSeven.results.length !== 0 && (
+          <Card
+            itemId={
+              tvTrailerSeven.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerSeven.results[
+                    tvTrailerSeven.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerSeven.results[0].id
+            } // NOTE: itemId is required for track items
+            key={
+              tvTrailerSeven.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerSeven.results[
+                    tvTrailerSeven.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerSeven.results[0].id
+            }
+            onClick={handleClick(
+              tvTrailerSeven.results.findIndex((el) => el.official === true) !==
+                -1
+                ? tvTrailerSeven.results[
+                    tvTrailerSeven.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerSeven.results[0].id
+            )}
+            selected={isItemSelected(
+              tvTrailerSeven.results.findIndex((el) => el.official === true) !==
+                -1
+                ? tvTrailerSeven.results[
+                    tvTrailerSeven.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerSeven.results[0].id
+            )}
+            trailer={
+              tvTrailerSeven.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerSeven.results[
+                    tvTrailerSeven.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ]
+                : tvTrailerSeven.results[0]
+            }
+            title={tvTrailerSeven.title}
+          />
+        )}
+        {successTrailerEight && tvTrailerEight.results.length !== 0 && (
+          <Card
+            itemId={
+              tvTrailerEight.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerEight.results[
+                    tvTrailerEight.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerEight.results[0].id
+            } // NOTE: itemId is required for track items
+            key={
+              tvTrailerEight.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerEight.results[
+                    tvTrailerEight.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerEight.results[0].id
+            }
+            onClick={handleClick(
+              tvTrailerEight.results.findIndex((el) => el.official === true) !==
+                -1
+                ? tvTrailerEight.results[
+                    tvTrailerEight.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerEight.results[0].id
+            )}
+            selected={isItemSelected(
+              tvTrailerEight.results.findIndex((el) => el.official === true) !==
+                -1
+                ? tvTrailerEight.results[
+                    tvTrailerEight.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerEight.results[0].id
+            )}
+            trailer={
+              tvTrailerEight.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerEight.results[
+                    tvTrailerEight.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ]
+                : tvTrailerEight.results[0]
+            }
+            title={tvTrailerEight.title}
+          />
+        )}
+        {successTrailerNine && tvTrailerNine.results.length !== 0 && (
+          <Card
+            itemId={
+              tvTrailerNine.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerNine.results[
+                    tvTrailerNine.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerNine.results[0].id
+            } // NOTE: itemId is required for track items
+            key={
+              tvTrailerNine.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerNine.results[
+                    tvTrailerNine.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerNine.results[0].id
+            }
+            onClick={handleClick(
+              tvTrailerNine.results.findIndex((el) => el.official === true) !==
+                -1
+                ? tvTrailerNine.results[
+                    tvTrailerNine.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerNine.results[0].id
+            )}
+            selected={isItemSelected(
+              tvTrailerNine.results.findIndex((el) => el.official === true) !==
+                -1
+                ? tvTrailerNine.results[
+                    tvTrailerNine.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ].id
+                : tvTrailerNine.results[0].id
+            )}
+            trailer={
+              tvTrailerNine.results.findIndex((el) => el.official === true) !==
+              -1
+                ? tvTrailerNine.results[
+                    tvTrailerNine.results.findIndex(
+                      (el) => el.official === true
+                    )
+                  ]
+                : tvTrailerNine.results[0]
+            }
+            title={tvTrailerNine.title}
           />
         )}
       </ScrollMenu>
@@ -521,9 +611,8 @@ const LatestTrailersSection = () => {
   );
 };
 
-function Card({ onClick, trailer, title, itemId }) {
+function Card({ onClick, trailer, title }) {
   const visibility = useContext(VisibilityContext);
-  // console.log(trailer);
 
   return (
     <>
