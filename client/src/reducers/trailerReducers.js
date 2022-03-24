@@ -49,7 +49,7 @@ export const tvTrailerOneReducer = (state = {}, action) => {
     case TV_TRAILER_ONE_REQUEST:
       return { loading: true };
     case TV_TRAILER_ONE_SUCCESS:
-      return { loading: false, success: true, trailerOne: action.payload };
+      return { loading: false, success: true, tvTrailerOne: action.payload };
     case TV_TRAILER_ONE_FAILURE:
       return { loading: false, error: action.payload };
     default:
@@ -62,7 +62,7 @@ export const tvTrailerTwoReducer = (state = {}, action) => {
     case TV_TRAILER_TWO_REQUEST:
       return { loading: true };
     case TV_TRAILER_TWO_SUCCESS:
-      return { loading: false, success: true, trailerTwo: action.payload };
+      return { loading: false, success: true, tvTrailerTwo: action.payload };
     case TV_TRAILER_TWO_FAILURE:
       return { loading: false, error: action.payload };
     default:
@@ -75,7 +75,7 @@ export const tvTrailerThreeReducer = (state = {}, action) => {
     case TV_TRAILER_THREE_REQUEST:
       return { loading: true };
     case TV_TRAILER_THREE_SUCCESS:
-      return { loading: false, success: true, trailerThree: action.payload };
+      return { loading: false, success: true, tvTrailerThree: action.payload };
     case TV_TRAILER_THREE_FAILURE:
       return { loading: false, error: action.payload };
     default:
@@ -88,7 +88,7 @@ export const tvTrailerFourReducer = (state = {}, action) => {
     case TV_TRAILER_FOUR_REQUEST:
       return { loading: true };
     case TV_TRAILER_FOUR_SUCCESS:
-      return { loading: false, success: true, trailerFour: action.payload };
+      return { loading: false, success: true, tvTrailerFour: action.payload };
     case TV_TRAILER_FOUR_FAILURE:
       return { loading: false, error: action.payload };
     default:
@@ -101,7 +101,7 @@ export const tvTrailerFiveReducer = (state = {}, action) => {
     case TV_TRAILER_FIVE_REQUEST:
       return { loading: true };
     case TV_TRAILER_FIVE_SUCCESS:
-      return { loading: false, success: true, trailerFive: action.payload };
+      return { loading: false, success: true, tvTrailerFive: action.payload };
     case TV_TRAILER_FIVE_FAILURE:
       return { loading: false, error: action.payload };
     default:
@@ -114,7 +114,7 @@ export const tvTrailerSixReducer = (state = {}, action) => {
     case TV_TRAILER_SIX_REQUEST:
       return { loading: true };
     case TV_TRAILER_SIX_SUCCESS:
-      return { loading: false, success: true, trailerSix: action.payload };
+      return { loading: false, success: true, tvTrailerSix: action.payload };
     case TV_TRAILER_SIX_FAILURE:
       return { loading: false, error: action.payload };
     default:
@@ -127,7 +127,7 @@ export const tvTrailerSevenReducer = (state = {}, action) => {
     case TV_TRAILER_SEVEN_REQUEST:
       return { loading: true };
     case TV_TRAILER_SEVEN_SUCCESS:
-      return { loading: false, success: true, trailerSeven: action.payload };
+      return { loading: false, success: true, tvTrailerSeven: action.payload };
     case TV_TRAILER_SEVEN_FAILURE:
       return { loading: false, error: action.payload };
     default:
@@ -140,7 +140,7 @@ export const tvTrailerEightReducer = (state = {}, action) => {
     case TV_TRAILER_EIGHT_REQUEST:
       return { loading: true };
     case TV_TRAILER_EIGHT_SUCCESS:
-      return { loading: false, success: true, trailerEight: action.payload };
+      return { loading: false, success: true, tvTrailerEight: action.payload };
     case TV_TRAILER_EIGHT_FAILURE:
       return { loading: false, error: action.payload };
     default:
@@ -153,7 +153,7 @@ export const tvTrailerNineReducer = (state = {}, action) => {
     case TV_TRAILER_NINE_REQUEST:
       return { loading: true };
     case TV_TRAILER_NINE_SUCCESS:
-      return { loading: false, success: true, trailerNine: action.payload };
+      return { loading: false, success: true, tvTrailerNine: action.payload };
     case TV_TRAILER_NINE_FAILURE:
       return { loading: false, error: action.payload };
     default:
