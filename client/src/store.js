@@ -26,7 +26,15 @@ import {
 
 import {
   tvOnAirReducer,
+  tvTrailerEightReducer,
+  tvTrailerFiveReducer,
+  tvTrailerFourReducer,
+  tvTrailerNineReducer,
   tvTrailerOneReducer,
+  tvTrailerSevenReducer,
+  tvTrailerSixReducer,
+  tvTrailerThreeReducer,
+  tvTrailerTwoReducer,
 } from './reducers/trailerReducers';
 
 const reducer = combineReducers({
@@ -48,6 +56,14 @@ const reducer = combineReducers({
   searchPeople: searchPeopleReducer,
   tvOnAir: tvOnAirReducer,
   tvTrailerOne: tvTrailerOneReducer,
+  tvTrailerTwo: tvTrailerTwoReducer,
+  tvTrailerThree: tvTrailerThreeReducer,
+  tvTrailerFour: tvTrailerFourReducer,
+  tvTrailerFive: tvTrailerFiveReducer,
+  tvTrailerSix: tvTrailerSixReducer,
+  tvTrailerSeven: tvTrailerSevenReducer,
+  tvTrailerEight: tvTrailerEightReducer,
+  tvTrailerNine: tvTrailerNineReducer,
 });
 
 // Initial loading when the redux store is loaded.
