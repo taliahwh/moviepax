@@ -25,6 +25,16 @@ import {
 } from './reducers/searchReducers';
 
 import {
+  moviesInTheatresReducer,
+  movieTrailerEightReducer,
+  movieTrailerFiveReducer,
+  movieTrailerFourReducer,
+  movieTrailerNineReducer,
+  movieTrailerOneReducer,
+  movieTrailerSevenReducer,
+  movieTrailerSixReducer,
+  movieTrailerThreeReducer,
+  movieTrailerTwoReducer,
   tvOnAirReducer,
   tvTrailerEightReducer,
   tvTrailerFiveReducer,
@@ -64,6 +74,16 @@ const reducer = combineReducers({
   tvTrailerSeven: tvTrailerSevenReducer,
   tvTrailerEight: tvTrailerEightReducer,
   tvTrailerNine: tvTrailerNineReducer,
+  movieInTheatres: moviesInTheatresReducer,
+  movieTrailerOne: movieTrailerOneReducer,
+  movieTrailerTwo: movieTrailerTwoReducer,
+  movieTrailerThree: movieTrailerThreeReducer,
+  movieTrailerFour: movieTrailerFourReducer,
+  movieTrailerFive: movieTrailerFiveReducer,
+  movieTrailerSix: movieTrailerSixReducer,
+  movieTrailerSeven: movieTrailerSevenReducer,
+  movieTrailerEight: movieTrailerEightReducer,
+  movieTrailerNine: movieTrailerNineReducer,
 });
 
 // Initial loading when the redux store is loaded.

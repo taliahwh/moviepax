@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { useDispatch, useSelector } from 'react-redux';
 // import ModalVideo from 'react-modal-video';
@@ -11,13 +11,10 @@ import TrailerCard from './TrailerCard';
 
 import { getTVTrailers } from '../actions/trailerActions';
 
-const getItems = () =>
-  Array(20)
-    .fill(0)
-    .map((_, ind) => ({ id: `element-${ind}` }));
-
 const LatestTrailersSection = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
+
   const [selected, setSelected] = React.useState([]);
 
   const {
@@ -606,6 +603,8 @@ const LatestTrailersSection = () => {
             title={tvTrailerNine.title}
           />
         )}
+
+        {/* ---------------------------------------------------------------------------------- */}
       </ScrollMenu>
     </div>
   );
