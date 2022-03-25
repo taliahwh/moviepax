@@ -51,6 +51,22 @@ import {
   TV_TRAILERS_REQUEST,
   TV_TRAILERS_SUCCESS,
   TV_TRAILERS_FAILURE,
+  TV_TRAILER_TWO_FAILURE,
+  TV_TRAILER_THREE_FAILURE,
+  TV_TRAILER_FOUR_FAILURE,
+  TV_TRAILER_FIVE_FAILURE,
+  TV_TRAILER_SIX_FAILURE,
+  TV_TRAILER_SEVEN_FAILURE,
+  TV_TRAILER_EIGHT_FAILURE,
+  TV_TRAILER_NINE_FAILURE,
+  MOVIE_TRAILER_TWO_FAILURE,
+  MOVIE_TRAILER_THREE_FAILURE,
+  MOVIE_TRAILER_FOUR_FAILURE,
+  MOVIE_TRAILER_FIVE_FAILURE,
+  MOVIE_TRAILER_SIX_FAILURE,
+  MOVIE_TRAILER_SEVEN_FAILURE,
+  MOVIE_TRAILER_EIGHT_FAILURE,
+  MOVIE_TRAILER_NINE_FAILURE,
 } from '../constants/trailerConstants';
 
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
@@ -202,6 +218,13 @@ export const getTVTrailers = () => async (dispatch) => {
     /* ---------------------------------------------------------------------------------------- */
   } catch (error) {
     dispatch({
+      type: TV_TRAILERS_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
       type: TV_ON_AIR_FAILURE,
       payload:
         error.response && error.response.data.message
@@ -210,6 +233,62 @@ export const getTVTrailers = () => async (dispatch) => {
     });
     dispatch({
       type: TV_TRAILER_ONE_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: TV_TRAILER_TWO_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: TV_TRAILER_THREE_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: TV_TRAILER_FOUR_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: TV_TRAILER_FIVE_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: TV_TRAILER_SIX_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: TV_TRAILER_SEVEN_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: TV_TRAILER_EIGHT_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: TV_TRAILER_NINE_FAILURE,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -380,6 +459,62 @@ export const getMovieTrailers = () => async (dispatch) => {
     });
     dispatch({
       type: MOVIE_TRAILER_ONE_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: MOVIE_TRAILER_TWO_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: MOVIE_TRAILER_THREE_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: MOVIE_TRAILER_FOUR_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: MOVIE_TRAILER_FIVE_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: MOVIE_TRAILER_SIX_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: MOVIE_TRAILER_SEVEN_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: MOVIE_TRAILER_EIGHT_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: MOVIE_TRAILER_NINE_FAILURE,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
