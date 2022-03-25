@@ -1374,13 +1374,14 @@ function Card({ onClick, trailer, title }) {
               src={`https://img.youtube.com/vi/${trailer.key}/maxresdefault.jpg`}
               alt="trailer cover"
             />
-            <button
-              type="button"
-              data-modal-toggle="authentication-modal"
+            <a
+              href={`https://www.youtube.com/watch?v=${trailer.key}`}
+              target={'_blank'}
+              rel="noreferrer noopener"
               className="absolute top-16 left-36 w-16 h-16 rounded-full focus:outline-none"
             >
               <FontAwesomeIcon icon={faPlay} className="text-white fa-2xl" />
-            </button>
+            </a>
           </div>
 
           <p className="font-semibold text-lg px-3 text-white pt-3 text-center">
