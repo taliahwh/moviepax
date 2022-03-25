@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.b7f7a929.css",
-    "main.js": "/static/js/main.7ccb6ce9.js",
+    "main.css": "/static/css/main.65904cff.css",
+    "main.js": "/static/js/main.fbf12608.js",
     "static/media/the_wire_banner.png": "/static/media/the_wire_banner.bb0c09c5b8bc1ce38627.png",
     "static/media/movipax_logo.png": "/static/media/movipax_logo.e8e56ecae7c59ea4ce20.png",
     "index.html": "/index.html",
-    "main.b7f7a929.css.map": "/static/css/main.b7f7a929.css.map",
-    "main.7ccb6ce9.js.map": "/static/js/main.7ccb6ce9.js.map"
+    "main.65904cff.css.map": "/static/css/main.65904cff.css.map",
+    "main.fbf12608.js.map": "/static/js/main.fbf12608.js.map"
   },
   "entrypoints": [
-    "static/css/main.b7f7a929.css",
-    "static/js/main.7ccb6ce9.js"
+    "static/css/main.65904cff.css",
+    "static/js/main.fbf12608.js"
   ]
 }
