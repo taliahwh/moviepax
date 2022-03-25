@@ -26,6 +26,7 @@ import {
 
 import {
   moviesInTheatresReducer,
+  moviesTrailersReducer,
   movieTrailerEightReducer,
   movieTrailerFiveReducer,
   movieTrailerFourReducer,
@@ -43,6 +44,7 @@ import {
   tvTrailerOneReducer,
   tvTrailerSevenReducer,
   tvTrailerSixReducer,
+  tvTrailersReducer,
   tvTrailerThreeReducer,
   tvTrailerTwoReducer,
 } from './reducers/trailerReducers';
@@ -64,6 +66,7 @@ const reducer = combineReducers({
   searchMovies: searchMoviesReducer,
   searchTV: searchTVReducer,
   searchPeople: searchPeopleReducer,
+  tvTrailers: tvTrailersReducer,
   tvOnAir: tvOnAirReducer,
   tvTrailerOne: tvTrailerOneReducer,
   tvTrailerTwo: tvTrailerTwoReducer,
@@ -74,6 +77,7 @@ const reducer = combineReducers({
   tvTrailerSeven: tvTrailerSevenReducer,
   tvTrailerEight: tvTrailerEightReducer,
   tvTrailerNine: tvTrailerNineReducer,
+  moviesTrailers: moviesTrailersReducer,
   movieInTheatres: moviesInTheatresReducer,
   movieTrailerOne: movieTrailerOneReducer,
   movieTrailerTwo: movieTrailerTwoReducer,
