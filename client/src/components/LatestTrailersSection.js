@@ -1395,7 +1395,7 @@ const TrailersDropdown = () => {
   return (
     <>
       <button
-        id="dropdownButton"
+        id="trailersDropdown"
         data-dropdown-toggle="dropdown"
         className="text-white font-semibold bg-secondary text-md focus:ring-3 focus:ring-blue-300 rounded-full px-5 py-1 text-center inline-flex items-center"
         type="button"
@@ -1418,10 +1418,10 @@ const TrailersDropdown = () => {
       </button>
 
       <div
-        id="dropdown"
+        id="trailers"
         className="hidden z-10 w-28 text-base list-none bg-white rounded divide-y divide-gray-100 border-1 border-secondary"
       >
-        <ul className="py-1" aria-labelledby="dropdownButton1">
+        <ul className="py-1" aria-labelledby="trailersDropdown">
           <li>
             <Link
               to="/trailers/ontv"
