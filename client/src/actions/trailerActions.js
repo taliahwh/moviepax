@@ -23,9 +23,9 @@ import {
   TV_TRAILER_EIGHT_SUCCESS,
   TV_TRAILER_NINE_REQUEST,
   TV_TRAILER_NINE_SUCCESS,
-  MOVIE_IN_THEATRES_REQUEST,
-  MOVIE_IN_THEATRES_SUCCESS,
-  MOVIE_IN_THEATRES_FAILURE,
+  MOVIES_NOW_PLAYING_REQUEST,
+  MOVIES_NOW_PLAYING_SUCCESS,
+  MOVIES_NOW_PLAYING_FAILURE,
   MOVIE_TRAILER_ONE_REQUEST,
   MOVIE_TRAILER_ONE_SUCCESS,
   MOVIE_TRAILER_ONE_FAILURE,
@@ -45,12 +45,20 @@ import {
   MOVIE_TRAILER_EIGHT_SUCCESS,
   MOVIE_TRAILER_NINE_REQUEST,
   MOVIE_TRAILER_NINE_SUCCESS,
+  MOVIES_TRAILERS_REQUEST,
+  MOVIES_TRAILERS_SUCCESS,
+  MOVIES_TRAILERS_FAILURE,
+  TV_TRAILERS_REQUEST,
+  TV_TRAILERS_SUCCESS,
+  TV_TRAILERS_FAILURE,
 } from '../constants/trailerConstants';
 
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 
 export const getTVTrailers = () => async (dispatch) => {
   try {
+    dispatch({ type: TV_TRAILERS_REQUEST });
+
     dispatch({ type: TV_ON_AIR_REQUEST });
 
     const { data } = await axios.get(
@@ -64,7 +72,9 @@ export const getTVTrailers = () => async (dispatch) => {
     data.results
       .slice(0, 9)
       .map((result) => idList.push({ id: result.id, title: result.name }));
-    console.log(idList);
+
+    // console.log('TV');
+    // console.log(idList);
 
     /* ---------------------------------------------------------------------------------------- */
 
@@ -187,6 +197,8 @@ export const getTVTrailers = () => async (dispatch) => {
       payload: trailerNineData.data,
     });
 
+    dispatch({ type: TV_TRAILERS_SUCCESS });
+
     /* ---------------------------------------------------------------------------------------- */
   } catch (error) {
     dispatch({
@@ -198,6 +210,176 @@ export const getTVTrailers = () => async (dispatch) => {
     });
     dispatch({
       type: TV_TRAILER_ONE_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getMovieTrailers = () => async (dispatch) => {
+  try {
+    dispatch({ type: MOVIES_TRAILERS_REQUEST });
+
+    dispatch({ type: MOVIES_NOW_PLAYING_REQUEST });
+
+    const { data } = await axios.get(
+      `${TMDB_BASE_URL}/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=1`
+    );
+
+    dispatch({ type: MOVIES_NOW_PLAYING_SUCCESS });
+
+    // Pull top 9 ids from results and store in new array
+    const idList = [];
+    data.results
+      .slice(0, 9)
+      .map((result) => idList.push({ id: result.id, title: result.title }));
+    // console.log(data);
+    // console.log('Movies');
+    // console.log(idList);
+
+    /* ---------------------------------------------------------------------------------------- */
+
+    dispatch({ type: MOVIE_TRAILER_ONE_REQUEST });
+
+    const trailerOneData = await axios.get(
+      `${TMDB_BASE_URL}/movie/${idList[0].id}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    );
+    trailerOneData.data.title = idList[0].title;
+
+    dispatch({ type: MOVIE_TRAILER_ONE_SUCCESS, payload: trailerOneData.data });
+    // console.log(trailerOneData.data);
+
+    /* ---------------------------------------------------------------------------------------- */
+
+    dispatch({ type: MOVIE_TRAILER_TWO_REQUEST });
+
+    const trailerTwoData = await axios.get(
+      `${TMDB_BASE_URL}/movie/${idList[1].id}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    );
+    trailerTwoData.data.title = idList[1].title;
+
+    dispatch({ type: MOVIE_TRAILER_TWO_SUCCESS, payload: trailerTwoData.data });
+
+    /* ---------------------------------------------------------------------------------------- */
+
+    dispatch({ type: MOVIE_TRAILER_THREE_REQUEST });
+
+    const trailerThreeData = await axios.get(
+      `${TMDB_BASE_URL}/movie/${idList[2].id}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    );
+    trailerThreeData.data.title = idList[2].title;
+
+    dispatch({
+      type: MOVIE_TRAILER_THREE_SUCCESS,
+      payload: trailerThreeData.data,
+    });
+    // console.log(trailerTwoData.data);
+    /* ---------------------------------------------------------------------------------------- */
+
+    dispatch({ type: MOVIE_TRAILER_FOUR_REQUEST });
+
+    const trailerFourData = await axios.get(
+      `${TMDB_BASE_URL}/movie/${idList[3].id}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    );
+    trailerFourData.data.title = idList[3].title;
+
+    dispatch({
+      type: MOVIE_TRAILER_FOUR_SUCCESS,
+      payload: trailerFourData.data,
+    });
+
+    /* ---------------------------------------------------------------------------------------- */
+
+    dispatch({ type: MOVIE_TRAILER_FIVE_REQUEST });
+
+    const trailerFiveData = await axios.get(
+      `${TMDB_BASE_URL}/movie/${idList[4].id}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    );
+    trailerFiveData.data.title = idList[4].title;
+
+    dispatch({
+      type: MOVIE_TRAILER_FIVE_SUCCESS,
+      payload: trailerFiveData.data,
+    });
+
+    /* ---------------------------------------------------------------------------------------- */
+
+    dispatch({ type: MOVIE_TRAILER_SIX_REQUEST });
+
+    const trailerSixData = await axios.get(
+      `${TMDB_BASE_URL}/movie/${idList[5].id}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    );
+    trailerSixData.data.title = idList[5].title;
+
+    dispatch({
+      type: MOVIE_TRAILER_SIX_SUCCESS,
+      payload: trailerSixData.data,
+    });
+
+    /* ---------------------------------------------------------------------------------------- */
+
+    dispatch({ type: MOVIE_TRAILER_SEVEN_REQUEST });
+
+    const trailerSevenData = await axios.get(
+      `${TMDB_BASE_URL}/movie/${idList[6].id}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    );
+    trailerSevenData.data.title = idList[6].title;
+
+    dispatch({
+      type: MOVIE_TRAILER_SEVEN_SUCCESS,
+      payload: trailerSevenData.data,
+    });
+
+    /* ---------------------------------------------------------------------------------------- */
+
+    dispatch({ type: MOVIE_TRAILER_EIGHT_REQUEST });
+
+    const trailerEightData = await axios.get(
+      `${TMDB_BASE_URL}/movie/${idList[7].id}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    );
+    trailerEightData.data.title = idList[7].title;
+
+    dispatch({
+      type: MOVIE_TRAILER_EIGHT_SUCCESS,
+      payload: trailerEightData.data,
+    });
+
+    /* ---------------------------------------------------------------------------------------- */
+
+    dispatch({ type: MOVIE_TRAILER_NINE_REQUEST });
+
+    const trailerNineData = await axios.get(
+      `${TMDB_BASE_URL}/movie/${idList[8].id}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    );
+    trailerNineData.data.title = idList[8].title;
+
+    dispatch({
+      type: MOVIE_TRAILER_NINE_SUCCESS,
+      payload: trailerNineData.data,
+    });
+
+    dispatch({ type: MOVIES_TRAILERS_SUCCESS });
+
+    /* ---------------------------------------------------------------------------------------- */
+  } catch (error) {
+    dispatch({
+      type: MOVIES_TRAILERS_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: MOVIES_NOW_PLAYING_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    dispatch({
+      type: MOVIE_TRAILER_ONE_FAILURE,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
