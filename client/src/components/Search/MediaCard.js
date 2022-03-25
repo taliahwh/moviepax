@@ -45,9 +45,7 @@ const MediaCard = ({ result }) => {
           </h4>
         )}
         <p className="mt-3 h-16 w-72 sm:w-full text-ellipsis overflow-hidden">
-          While on a forgettable first date together in Ohio, a black man and a
-          black woman are pulled over for a minor traffic infraction. The
-          situation escalates, with sudden and tragic results.
+          {result.overview}
         </p>
       </div>
     </Link>
