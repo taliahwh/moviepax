@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f578bdd2.css",
+    "main.js": "/static/js/main.7ae79ea5.js",
+    "static/media/the_wire_banner.png": "/static/media/the_wire_banner.bb0c09c5b8bc1ce38627.png",
+    "static/media/movipax_logo.png": "/static/media/movipax_logo.e8e56ecae7c59ea4ce20.png",
+    "index.html": "/index.html",
+    "main.f578bdd2.css.map": "/static/css/main.f578bdd2.css.map",
+    "main.7ae79ea5.js.map": "/static/js/main.7ae79ea5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f578bdd2.css",
+    "static/js/main.7ae79ea5.js"
+  ]
+}
