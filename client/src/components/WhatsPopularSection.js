@@ -88,7 +88,7 @@ const WhatsPopularSection = () => {
           </NavLink>
         </div>
         <div className="md:hidden">
-          <Dropdown />
+          <PopularDropdown />
         </div>
       </div>
 
@@ -133,7 +133,6 @@ function MovieCard({ onClick, item }) {
   return (
     <div
       onClick={() => onClick(visibility)}
-      // TODO Implement fade-in transition
       className="flex space-x-2"
       tabIndex={0}
     >
@@ -180,12 +179,12 @@ function MovieCard({ onClick, item }) {
   );
 }
 
-const Dropdown = () => {
+const PopularDropdown = () => {
   return (
     <>
       <button
-        id="dropdownButton1"
-        data-dropdown-toggle="dropdown1"
+        id="dropdownButton"
+        data-dropdown-toggle="dropdown"
         className="text-white font-semibold bg-secondary text-md focus:ring-3 focus:ring-blue-300 rounded-full px-5 py-1 text-center inline-flex items-center"
         type="button"
       >
@@ -207,7 +206,7 @@ const Dropdown = () => {
       </button>
 
       <div
-        id="dropdown1"
+        id="dropdown"
         className="hidden z-10 w-28 text-base list-none bg-white rounded divide-y divide-gray-100 border-1 border-secondary"
       >
         <ul className="py-1" aria-labelledby="dropdownButton1">

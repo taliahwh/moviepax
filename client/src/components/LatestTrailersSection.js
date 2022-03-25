@@ -174,7 +174,7 @@ const LatestTrailersSection = () => {
   };
 
   useEffect(() => {
-    if (location.pathname === '/') {
+    if (location.pathname === '/' || location.pathname === '/trailers/ontv') {
       dispatch({ type: MOVIES_TRAILERS_FAILURE });
       dispatch(getTVTrailers());
     }
@@ -222,7 +222,7 @@ const LatestTrailersSection = () => {
           </NavLink>
         </div>
         <div className="md:hidden">
-          <Dropdown />
+          <TrailersDropdown />
         </div>
       </div>
       {/* Content */}
@@ -1391,7 +1391,7 @@ function Card({ onClick, trailer, title }) {
   );
 }
 
-const Dropdown = () => {
+const TrailersDropdown = () => {
   return (
     <>
       <button
@@ -1423,12 +1423,12 @@ const Dropdown = () => {
       >
         <ul className="py-1" aria-labelledby="dropdownButton1">
           <li>
-            <a
-              href="/"
+            <Link
+              to="/trailers/ontv"
               className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
             >
               On TV
-            </a>
+            </Link>
           </li>
           <li>
             <Link

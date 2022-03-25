@@ -163,7 +163,7 @@ const MovieCard = ({ onClick, item }) => {
             />
           )}
           <div className="rounded-full w-12 h-12 bg-secondary relative left-4 bottom-7">
-            <p className="text-white font-semibold relative left-2.5 top-3 ">
+            <p className="text-white font-semibold relative left-2.5 top-3">
               {item.vote_average * 10}
               <span className="text-xs font-semibold">%</span>
             </p>
@@ -187,12 +187,12 @@ const Dropdown = () => {
   return (
     <>
       <button
-        id="dropdownButton"
-        data-dropdown-toggle="dropdown"
+        id="dropdownButton1"
+        data-dropdown-toggle="dropdown1"
         className="text-white font-semibold bg-secondary text-md focus:ring-3 focus:ring-blue-300 rounded-full px-5 py-1 text-center inline-flex items-center"
         type="button"
       >
-        When{' '}
+        Format{' '}
         <svg
           className="ml-2 w-4 h-4"
           fill="none"
@@ -210,10 +210,10 @@ const Dropdown = () => {
       </button>
 
       <div
-        id="dropdown"
+        id="dropdown1"
         className="hidden z-10 w-28 text-base list-none bg-white rounded divide-y divide-gray-100 border-1 border-secondary"
       >
-        <ul className="py-1" aria-labelledby="dropdownButton">
+        <ul className="py-1" aria-labelledby="dropdownButton1">
           <li>
             <Link
               to="/"
