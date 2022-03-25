@@ -2,10 +2,6 @@ import React from 'react';
 import moment from 'moment';
 
 const ActingSection = ({ credits }) => {
-  const sortedCredits = credits.slice(0, 10).sort((a, b) => a.id - b.id);
-  // sortedCredits.map((credit) => credit.first_air_date[0]);
-
-  // console.log(sortedCredits);
   return (
     <>
       {credits.map(

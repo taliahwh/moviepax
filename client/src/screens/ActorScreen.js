@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
@@ -10,16 +10,10 @@ import ActingSection from '../components/ActingSection';
 
 import { getActorDetails } from '../actions/mediaActions';
 
-const getItems = () =>
-  Array(20)
-    .fill(0)
-    .map((_, ind) => ({ id: `element-${ind}` }));
-
 const ActorScreen = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const [items, setItems] = React.useState(getItems);
-  const [selected, setSelected] = React.useState([]);
+  const [selected, setSelected] = useState([]);
 
   const {
     loading: loadingActorDetails,

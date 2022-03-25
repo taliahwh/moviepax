@@ -64,10 +64,6 @@ const OverviewHeader = ({ item }) => {
           )}
 
           <div className="flex space-x-3 text-white">
-            <p className="font-light border-1 text-gray-300 border-gray-300 px-1">
-              TV-MA
-            </p>
-
             {item.genres &&
               item.genres.map((genre, index) => (
                 <p key={index}>{genre.name}</p>
@@ -82,14 +78,14 @@ const OverviewHeader = ({ item }) => {
           </div>
 
           <div className="pt-8 flex space-x-1 sm:space-x-4 items-center">
-            <div className="rounded-full w-12 h-12 bg-secondary outline outline-offset-0 outline-green-500">
+            <div className="rounded-full w-12 h-12 bg-secondary">
               <p className="text-white font-semibold relative left-2.5 top-3 ">
                 {item.vote_average * 10}
                 <span className="text-xs font-semibold">%</span>
               </p>
             </div>
 
-            <button className="flex items-center">
+            {/* <button className="flex items-center">
               <FontAwesomeIcon
                 icon={faPlay}
                 className="text-white fa-sm bg-secondary
@@ -98,7 +94,7 @@ const OverviewHeader = ({ item }) => {
               <span className="font-medium text-white ml-2 invisible md:visible">
                 Play Trailer
               </span>
-            </button>
+            </button> */}
           </div>
 
           <h3 className="py-5 text-base italic text-gray-400">

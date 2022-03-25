@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,12 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 import { LeftArrow, RightArrow } from '../components/MediaDetails/Arrows';
-import TrailerCard from './TrailerCard';
 
 import {
-  MOVIES_NOW_PLAYING_FAILURE,
   MOVIES_TRAILERS_FAILURE,
-  TV_ON_AIR_FAILURE,
   TV_TRAILERS_FAILURE,
 } from '../constants/trailerConstants';
 

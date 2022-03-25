@@ -162,7 +162,7 @@ const MovieCard = ({ onClick, item }) => {
               className="w-40 rounded-lg mx-1"
             />
           )}
-          <div className="rounded-full w-12 h-12 bg-secondary relative left-4 bottom-7 outline outline-offset-0 outline-green-500">
+          <div className="rounded-full w-12 h-12 bg-secondary relative left-4 bottom-7">
             <p className="text-white font-semibold relative left-2.5 top-3 ">
               {item.vote_average * 10}
               <span className="text-xs font-semibold">%</span>

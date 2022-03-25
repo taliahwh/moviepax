@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import stockPhoto from '../assets/stock_photo.png';
-
 const MovieCard = () => {
   return (
     <Link to="/:id" className="flex flex-col w-44 ">
@@ -12,7 +10,7 @@ const MovieCard = () => {
           src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/jtnfNzqZwN4E32FGGxx1YZaBWWf.jpg"
           alt="movie cover"
         />
-        <div className="rounded-full w-12 h-12 bg-secondary relative left-4 bottom-7 outline outline-offset-0 outline-green-500">
+        <div className="rounded-full w-12 h-12 bg-secondary relative left-4 bottom-7 outline outline-offset-0">
           <p className="text-white font-medium relative left-2.5 top-3 ">
             84<span className="text-xs font-semibold">%</span>
           </p>
