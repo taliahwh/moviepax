@@ -31,7 +31,7 @@ const MediaCard = ({ result }) => {
         />
       )}
       <div className="w-full flex flex-col ">
-        <h1 className="text-lg sm:text-xl font-semibold">
+        <h1 className="text-lg sm:text-xl w-44 md:w-full font-semibold truncate">
           {result.original_title || result.original_name || result.name}
         </h1>
         {result.release_date && (
@@ -40,11 +40,11 @@ const MediaCard = ({ result }) => {
           </h4>
         )}
         {result.first_air_date && (
-          <h4 className="text-sm sm:text-md text-[#999999]">
+          <h4 className="text-sm sm:text-md text-[#999999] ">
             {moment(result.first_air_date).format('MMM d, YYYY')}
           </h4>
         )}
-        <p className="mt-3 h-16 w-72 sm:w-full text-ellipsis overflow-hidden">
+        <p className="mt-3 h-16 w-44 xs:w-80 sm:w-full text-ellipsis overflow-hidden">
           {result.overview}
         </p>
       </div>
