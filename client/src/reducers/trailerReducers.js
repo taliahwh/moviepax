@@ -59,7 +59,26 @@ import {
   MOVIE_TRAILER_SEVEN_FAILURE,
   MOVIE_TRAILER_EIGHT_FAILURE,
   MOVIE_TRAILER_NINE_FAILURE,
+  MOVIES_TRAILERS_REQUEST,
+  MOVIES_TRAILERS_SUCCESS,
+  MOVIES_TRAILERS_FAILURE,
+  TV_TRAILERS_REQUEST,
+  TV_TRAILERS_SUCCESS,
+  TV_TRAILERS_FAILURE,
 } from '../constants/trailerConstants';
+
+export const tvTrailersReducer = (state = {}, action) => {
+  switch (action.type) {
+    case TV_TRAILERS_REQUEST:
+      return { loading: true };
+    case TV_TRAILERS_SUCCESS:
+      return { loading: false, success: true };
+    case TV_TRAILERS_FAILURE:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 export const tvOnAirReducer = (state = { tvOnAir: [] }, action) => {
   switch (action.type) {
@@ -192,6 +211,19 @@ export const tvTrailerNineReducer = (state = {}, action) => {
 };
 
 /* ----------------------------------------------------------------------------------- */
+
+export const moviesTrailersReducer = (state = {}, action) => {
+  switch (action.type) {
+    case MOVIES_TRAILERS_REQUEST:
+      return { loading: true };
+    case MOVIES_TRAILERS_SUCCESS:
+      return { loading: false, success: true };
+    case MOVIES_TRAILERS_FAILURE:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 export const moviesInTheatresReducer = (
   state = { moviesInTheatres: [] },
